@@ -1,5 +1,6 @@
 <header class="desktop-header">
 	<div>
+	<div class="progress"></div>
 	<?php
 		$site_nav_args = array(
 			'theme_location'  => 'site',
