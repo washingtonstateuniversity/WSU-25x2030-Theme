@@ -8,7 +8,64 @@
  Version:        0.0.1
 */
 
-main {
-    color: #000;
+html {
+	background: #fff;
+}
+
+.desktop-header {
+	background: #fff;
+	border-bottom: 1px solid #981e32;
+	height: 50px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+.desktop-header > div {
+	margin: 0 auto;
+	max-width: 1188px;
+}
+
+.site-menu {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	float: right;
+	height: 50px;
+	list-style: none;
+	padding: 0;
+}
+
+.site-menu li {
+	float: left;
+	letter-spacing: 1px;
+	padding: 0 1rem;
+}
+
+.site-menu li + li {
+	border-left: 1px solid #999;
+}
+
+.site-menu a {
+	color: #a6a6a6;
+}
+
+@media only screen and (min-width: 694px) {
+	#jacket #binder main {
+		margin-top: 0;
+	}
+	#spine {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 693px) {
+	.desktop-header {
+		display: none;
+	}
 }
 /*# sourceMappingURL=style.css.map */
