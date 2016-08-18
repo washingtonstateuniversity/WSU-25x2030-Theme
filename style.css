@@ -24,7 +24,17 @@ html {
 
 .desktop-header > div {
 	margin: 0 auto;
-	max-width: 1188px;
+	max-width: 1584px;
+	overflow: auto;
+	position: relative;
+}
+
+.progress {
+	background: #f1f1f1;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	z-index: -1;
 }
 
 .site-menu {
