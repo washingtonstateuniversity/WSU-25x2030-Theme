@@ -63,7 +63,11 @@ html {
 }
 
 #top .one {
+	color: #fff;
+	display: flex;
+	flex-direction: column;
 	height: 100vh;
+	justify-content: center;
 	max-width: 1188px;
 	width: 100%;
 }
@@ -80,6 +84,17 @@ html {
 	top: -10%;
 	width: 120%;
 	z-index: -1;
+}
+
+#top h1 {
+	font-family: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	font-size: 8rem;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+#top h1:first-line {
+	color: #919191;
 }
 
 @media only screen and (min-width: 694px) {

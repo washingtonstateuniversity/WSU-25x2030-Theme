@@ -24,13 +24,27 @@ class WSU_25_by_2030_Theme {
 	 */
 	public function setup_hooks() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'make_the_builder_content', array( $this, 'replace_p_with_figure' ), 99 );
 	}
 
 	/**
 	 * Enqueue the scripts used in the theme.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ) );
+		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
+		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'wsu-25-by-2030-typekit' ) );
+	}
+
+	/**
+	 * Replace paragraphs wrapped around lone images with figure.
+	 *
+	 * @param string $content Original content being stored.
+	 *
+	 * @return string Modified content.
+	 */
+	public function replace_p_with_figure( $content ) {
+		$content = preg_replace('/<p[^>]*>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\/p>/', '<figure class=\"wsu-p-replaced\">$1</figure>', $content);
+		return $content;
 	}
 }
 

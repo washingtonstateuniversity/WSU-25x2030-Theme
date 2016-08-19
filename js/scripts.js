@@ -42,4 +42,7 @@
 			$('.image').css('transform', 'matrix(1, 0, 0, 1, ' + new_x + ', ' + new_y + ')');
 		});
 	});
+
+	// Typekit
+	try{Typekit.load();}catch(e){};
 }(jQuery));
