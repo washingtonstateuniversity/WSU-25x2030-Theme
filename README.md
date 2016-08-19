@@ -1,5 +1,7 @@
 # WSU 25x2030 Theme
 
+[![Build Status](https://travis-ci.org/washingtonstateuniversity/WSU-25x2030-Theme.svg?branch=master)](https://travis-ci.org/washingtonstateuniversity/WSU-25x2030-Theme)
+
 ## Notes
 
 ### Implementing the top section parallax effect.
