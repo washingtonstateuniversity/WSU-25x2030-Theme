@@ -43,7 +43,7 @@ class WSU_25_by_2030_Theme {
 	 * @return string Modified content.
 	 */
 	public function replace_p_with_figure( $content ) {
-		$content = preg_replace('/<p[^>]*>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\/p>/', '<figure class=\"wsu-p-replaced\">$1</figure>', $content);
+		$content = preg_replace( '/<p[^>]*>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\/p>/', '<figure class=\"wsu-p-replaced\">$1</figure>', $content );
 		return $content;
 	}
 }
