@@ -64,6 +64,38 @@ html {
 	color: #a6a6a6;
 }
 
+/* Top section */
+#jacket #binder #top {
+	max-width: none;
+	overflow: hidden;
+	z-index: 2;
+}
+
+#jacket #top .column {
+	float: none;
+	margin: 0 auto;
+}
+
+#top .one {
+	height: 100vh;
+	max-width: 1188px;
+	width: 100%;
+}
+
+.logged-in #top .one {
+	height: calc(100vh - 32px);
+}
+
+#top .image {
+	background-size: cover;
+	height: 120%;
+	left: -10%;
+	position: absolute;
+	top: -10%;
+	width: 120%;
+	z-index: -1;
+}
+
 @media only screen and (min-width: 694px) {
 	#jacket #binder main {
 		margin-top: 0;
