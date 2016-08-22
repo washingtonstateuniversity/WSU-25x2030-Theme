@@ -43,6 +43,24 @@
 		});
 	});
 
-	// Typekit
-	try{Typekit.load();}catch(e){};
+	// Doormat section navigation
+	window.Doormat.prototype.go_to = function (index) {
+		var panels = document.querySelectorAll('.panel');
+
+		if (panels[index - 1]) {
+			var pos = panels[index - 1].STARTING_POS;
+
+			if (pos !== undefined) $('body').animate({scrollTop: pos});
+		} else {
+			throw Error('Doormat: no panel available at that index!');
+		}
+	}
+
+	$('.site-menu, .spine-sitenav').on('click', 'a', function (e) {
+		e.preventDefault();
+
+		var section = $(this).parent('li').index() + 1;
+
+		drive_doormat.go_to(section);
+	});
 }(jQuery));

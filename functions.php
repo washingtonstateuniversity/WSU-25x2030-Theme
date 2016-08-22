@@ -31,10 +31,11 @@ class WSU_25_by_2030_Theme {
 	 * Enqueue the scripts used in the theme.
 	 */
 	public function enqueue_scripts() {
+		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'wsu-25-by-2030-doormat' ), false, true );
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
-		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'wsu-25-by-2030-typekit' ) );
-		wp_enqueue_script( 'doormat', get_stylesheet_directory_uri() . '/js/doormat.js', array( 'jquery' ), false, true );
-		wp_add_inline_script( 'doormat', 'var myDoormat = new Doormat({ debounce: 150, snapping: { travel: false, viewport: true, threshold: 30, duration: ".25s" } });' );
+		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
+		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.js', array( 'jquery' ), false, true );
+		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: 150, snapping: { travel: false, viewport: true, threshold: 30, duration: ".25s" } });' );
 	}
 
 	/**
