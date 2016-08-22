@@ -62,8 +62,9 @@
 		e.preventDefault();
 
 		var li = $(this).parent('li'),
-			section = li.index() + 1;
+			section = li.index() + 2;
 
+		$('.panel').removeClass('current');
 		drive_doormat.go_to(section);
 		li.addClass('dogeared').siblings().removeClass('dogeared');
 	});
@@ -75,7 +76,7 @@
 
 		$.each(panels, function(index) {
 			if ($(this).hasClass('current')) {
-				nav_li.eq(index).addClass('dogeared').siblings().removeClass('dogeared');
+				nav_li.eq(index - 1).addClass('dogeared').siblings().removeClass('dogeared');
 			}
 		});
 	}, 250);
