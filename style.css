@@ -118,13 +118,29 @@ html {
 	color: #919191;
 }
 
+.hentry {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
 .section-wrapper {
 	background-color: #fff;
 	max-width: 1188px;
 	width: 100%;
 }
 
+.panel {
+	display: none;
+	position: fixed;
+	top: 0;
+	visibility: hidden;
+}
+
 .panel section {
+	box-sizing: border-box;
+	min-height: 100vh;
 	padding-top: 82px;
 }
 
