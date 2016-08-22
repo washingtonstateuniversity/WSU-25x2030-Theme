@@ -125,6 +125,10 @@ html {
 .panel section {
 	box-sizing: border-box;
 	min-height: 100vh;
+	padding-top: 50px;
+}
+
+.logged-in .panel section {
 	padding-top: 82px;
 }
 
