@@ -56,10 +56,9 @@ html {
 }
 
 /* Top section */
-#jacket #binder #top {
+#jacket #binder #top section {
 	max-width: none;
 	overflow: hidden;
-	z-index: 2;
 }
 
 #jacket #top .column {
@@ -102,6 +101,7 @@ html {
 	color: #919191;
 }
 
+/* Doormat.js */
 .hentry {
 	display: block;
 	position: relative;
@@ -126,6 +126,26 @@ html {
 	box-sizing: border-box;
 	min-height: 100vh;
 	padding-top: 82px;
+}
+
+/* Stories */
+#stories section {
+	padding-top: 10rem;
+}
+#stories .column {
+	width: 50%;
+}
+
+#stories .one,
+#stories .three {
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+
+#stories .two,
+#stories .four {
+	padding-left: 1rem;
+	padding-right: 2rem;
 }
 
 @media only screen and (min-width: 694px) {

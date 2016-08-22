@@ -68,7 +68,7 @@
 		li.addClass('dogeared').siblings().removeClass('dogeared');
 	});
 
-	// Add the `dogeared` class to a nav item when its respective section has the `current` class.
+	// Add the `dogeared` class to a nav item when its respective section has the `current` class
 	window.addEventListener('scroll', function () {
 		var panels = $('.panel'),
 			nav_li = $('.site-menu li');
@@ -80,4 +80,16 @@
 		});
 	}, 250);
 
+	// Story elements parallax
+	var story_pieces = $('#stories .column');
+
+	$(document).on('scroll', function() {
+		$.each(story_pieces, function(index) {
+			var piece = $(this),
+				velocity = (piece.hasClass('excerpt')) ? -2 + index : 2 + index,
+				y = -($(window).scrollTop() - piece.offset().top) / parseInt(velocity);
+
+			$(this).css('transform', 'translateY(' + y + 'px)');
+		});
+	});
 }(jQuery));
