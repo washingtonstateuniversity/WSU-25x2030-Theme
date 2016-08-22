@@ -33,6 +33,8 @@ class WSU_25_by_2030_Theme {
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'wsu-25-by-2030-typekit' ) );
+		wp_enqueue_script( 'doormat', get_stylesheet_directory_uri() . '/js/doormat.js', array( 'jquery' ), false, true );
+		wp_add_inline_script( 'doormat', 'var myDoormat = new Doormat({ debounce: 150, snapping: { travel: false, viewport: true, threshold: 30, duration: ".25s" } });' );
 	}
 
 	/**
