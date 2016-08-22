@@ -19,7 +19,7 @@ html {
 	left: 0;
 	position: fixed;
 	width: 100%;
-	z-index: 1;
+	z-index: 999;
 }
 
 .desktop-header > div {
@@ -53,6 +53,7 @@ html {
 .site-menu li {
 	float: left;
 	letter-spacing: 1px;
+	line-height: 1;
 	padding: 0 1rem;
 }
 
@@ -62,6 +63,10 @@ html {
 
 .site-menu a {
 	color: #a6a6a6;
+}
+
+.site-menu .dogeared a {
+	color: #981e32;
 }
 
 /* Top section */
@@ -116,6 +121,32 @@ html {
 
 #top h1:first-line {
 	color: #919191;
+}
+
+.hentry {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.section-wrapper {
+	background-color: #fff;
+	max-width: 1188px;
+	width: 100%;
+}
+
+.panel {
+	display: none;
+	position: fixed;
+	top: 0;
+	visibility: hidden;
+}
+
+.panel section {
+	box-sizing: border-box;
+	min-height: 100vh;
+	padding-top: 82px;
 }
 
 @media only screen and (min-width: 694px) {

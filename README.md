@@ -4,9 +4,13 @@
 
 ## Notes
 
-### Implementing the top section parallax effect.
+### Implementing the top section parallax effect
 
 * The "WSU Spine Section IDs" plugin should be enabled.
 * The top section should be a _halves_ section, with only `unbound rebound recto verso` as the _Section Classes_ value and `top` as the _Section Id_.
 * The content goes in the first column, which should have `padded` set in the _Column Classes_ field.
 * The second column should have `image` in the _Column Classes_ field, and the desired image set as the _Background Image_.
+
+### Implementing the wipe effect (via doormat.js)
+
+* Add `panel` to the _Section Wrapper_ field for the sections that should have the wipe effect.
