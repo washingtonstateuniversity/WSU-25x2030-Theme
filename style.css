@@ -19,7 +19,7 @@ html {
 	left: 0;
 	position: fixed;
 	width: 100%;
-	z-index: 1;
+	z-index: 999;
 }
 
 .desktop-header > div {
@@ -116,6 +116,16 @@ html {
 
 #top h1:first-line {
 	color: #919191;
+}
+
+.section-wrapper {
+	background-color: #fff;
+	max-width: 1188px;
+	width: 100%;
+}
+
+.panel section {
+	padding-top: 82px;
 }
 
 @media only screen and (min-width: 694px) {
