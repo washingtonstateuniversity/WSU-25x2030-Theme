@@ -50,7 +50,9 @@
 		if (panels[index - 1]) {
 			var pos = panels[index - 1].STARTING_POS;
 
-			if (pos !== undefined) $('body').animate({scrollTop: pos});
+			if (pos !== undefined) {
+				$('body').animate({scrollTop: pos});
+			};
 		} else {
 			throw Error('Doormat: no panel available at that index!');
 		}
@@ -59,8 +61,23 @@
 	$('.site-menu, .spine-sitenav').on('click', 'a', function (e) {
 		e.preventDefault();
 
-		var section = $(this).parent('li').index() + 1;
+		var li = $(this).parent('li'),
+			section = li.index() + 1;
 
 		drive_doormat.go_to(section);
+		li.addClass('dogeared').siblings().removeClass('dogeared');
 	});
+
+	// Add the `dogeared` class to a nav item when its respective section has the `current` class.
+	window.addEventListener('scroll', function () {
+		var panels = $('.panel'),
+			nav_li = $('.site-menu li');
+
+		$.each(panels, function(index) {
+			if ($(this).hasClass('current')) {
+				nav_li.eq(index).addClass('dogeared').siblings().removeClass('dogeared');
+			}
+		});
+	}, 250);
+
 }(jQuery));

@@ -53,6 +53,7 @@ html {
 .site-menu li {
 	float: left;
 	letter-spacing: 1px;
+	line-height: 1;
 	padding: 0 1rem;
 }
 
@@ -62,6 +63,10 @@ html {
 
 .site-menu a {
 	color: #a6a6a6;
+}
+
+.site-menu .dogeared a {
+	color: #981e32;
 }
 
 /* Top section */
