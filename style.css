@@ -22,19 +22,19 @@ html {
 	z-index: 999;
 }
 
-.desktop-header > div {
-	margin: 0 auto;
-	max-width: 1584px;
-	overflow: auto;
-	position: relative;
-}
-
 .progress {
 	background: #f1f1f1;
 	height: 100%;
 	left: 0;
 	position: absolute;
 	z-index: -1;
+}
+
+.desktop-header nav {
+	margin: 0 auto;
+	max-width: 1584px;
+	overflow: auto;
+	position: relative;
 }
 
 .site-menu {
@@ -73,6 +73,7 @@ html {
 #jacket #binder #top section {
 	max-width: none;
 	overflow: hidden;
+	width: 100%;
 }
 
 #jacket #top .column {
@@ -131,12 +132,13 @@ html {
 }
 
 .section-wrapper {
-	background-color: #fff;
-	max-width: 1188px;
+	left: 0;
+	max-width: none;
 	width: 100%;
 }
 
 .panel {
+	box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
 	display: none;
 	position: fixed;
 	top: 0;
@@ -145,6 +147,7 @@ html {
 
 .panel section {
 	box-sizing: border-box;
+	margin: 0 auto;
 	min-height: 100vh;
 	padding-top: 50px;
 }
