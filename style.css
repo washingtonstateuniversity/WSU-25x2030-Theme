@@ -101,11 +101,18 @@ nav .site-menu .dogeared a {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	max-width: 1188px;
+	padding-top: 10rem;
 	width: 100%;
 }
 
 .logged-in #top .one {
 	height: calc(100vh - 32px);
+}
+
+#spirit-mark {
+	position: absolute;
+	top: 2rem;
+	width: 8rem;
 }
 
 #top .image {
