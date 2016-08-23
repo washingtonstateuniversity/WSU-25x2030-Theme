@@ -108,6 +108,7 @@ nav .site-menu .dogeared a {
 	font-family: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	font-size: 8rem;
 	font-weight: 900;
+	letter-spacing: 1px;
 	line-height: 0.9;
 	text-transform: uppercase;
 }
