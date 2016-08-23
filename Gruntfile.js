@@ -74,6 +74,10 @@ module.exports = function(grunt) {
             scripts: {
                 src: 'js/scripts.js',
                 dest: 'js/scripts.min.js'
+            },
+            doormat: {
+                src: 'js/doormat.js',
+                dest: 'js/doormat.min.js'
             }
         },
 
