@@ -76,6 +76,14 @@ nav .site-menu .dogeared a {
 }
 
 /* Top section */
+#top.panel {
+	box-shadow: none;
+}
+
+#top.panel.current {
+	box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
+}
+
 #jacket #binder #top section {
 	max-width: none;
 	overflow: hidden;
@@ -230,6 +238,18 @@ nav .site-menu .dogeared a {
 @media only screen and (max-width: 693px) {
 	.desktop-header {
 		display: none;
+	}
+
+	#top h1 {
+		font-size: 16vw;
+	}
+
+	#top p {
+		font-size: 0.9em;
+	}
+
+	#top .site-menu li {
+		font-size: 0.8em;
 	}
 }
 /*# sourceMappingURL=style.css.map */
