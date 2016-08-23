@@ -1,6 +1,6 @@
 <header class="desktop-header">
-	<div>
 	<div class="progress"></div>
+	<nav>
 	<?php
 		$site_nav_args = array(
 			'theme_location'  => 'site',
@@ -15,5 +15,5 @@
 		);
 		wp_nav_menu( $site_nav_args );
 	?>
-	</div>
+	</nav>
 </header>

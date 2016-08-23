@@ -12,13 +12,6 @@ html {
 	z-index: 999;
 }
 
-.desktop-header > div {
-	margin: 0 auto;
-	max-width: 1584px;
-	overflow: auto;
-	position: relative;
-}
-
 .progress {
 	background: #f1f1f1;
 	height: 100%;
@@ -27,31 +20,44 @@ html {
 	z-index: -1;
 }
 
+.desktop-header nav {
+	margin: 0 auto;
+	max-width: 1584px;
+	overflow: auto;
+	position: relative;
+}
+
 .site-menu {
-	align-items: center;
-	display: flex;
-	float: right;
-	height: 50px;
 	list-style: none;
 	padding: 0;
 }
 
+nav .site-menu {
+	align-items: center;
+	display: flex;
+	float: right;
+	height: 50px;
+}
+
 .site-menu li {
-	float: left;
 	letter-spacing: 1px;
+}
+
+nav .site-menu li {
+	float: left;
 	line-height: 1;
 	padding: 0 1rem;
 }
 
-.site-menu li + li {
+nav .site-menu li + li {
 	border-left: 1px solid #999;
 }
 
-.site-menu a {
+nav .site-menu a {
 	color: #a6a6a6;
 }
 
-.site-menu .dogeared a {
+nav .site-menu .dogeared a {
 	color: #981e32;
 }
 
@@ -59,6 +65,7 @@ html {
 #jacket #binder #top section {
 	max-width: none;
 	overflow: hidden;
+	width: 100%;
 }
 
 #jacket #top .column {
@@ -73,11 +80,18 @@ html {
 	height: 100vh;
 	justify-content: center;
 	max-width: 1188px;
+	padding-top: 10rem;
 	width: 100%;
 }
 
 .logged-in #top .one {
 	height: calc(100vh - 32px);
+}
+
+#spirit-mark {
+	position: absolute;
+	top: 2rem;
+	width: 8rem;
 }
 
 #top .image {
@@ -93,12 +107,40 @@ html {
 #top h1 {
 	font-family: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	font-size: 8rem;
-	font-weight: 800;
+	font-weight: 900;
+	letter-spacing: 1px;
+	line-height: 0.9;
 	text-transform: uppercase;
 }
 
 #top h1:first-line {
 	color: #919191;
+}
+
+#top p {
+	font-size: 1.2em;
+	font-weight: 300;
+	letter-spacing: 0.25em;
+	padding-left: 0.25em;
+	text-transform: uppercase;
+}
+
+#top .site-menu li {
+	font-size: 1.3em;
+	font-weight: 300;
+	padding: 0.5em;
+}
+
+#top .site-menu a {
+	color: #fff;
+	display: inline-block;
+	padding: 0.2em 0.5em;
+	transition: background .4s, color .4s;
+}
+
+#top .site-menu a:hover {
+	background-color: #E7E7E7;
+	color: #981e32;
 }
 
 /* Doormat.js */
@@ -110,12 +152,13 @@ html {
 }
 
 .section-wrapper {
-	background-color: #fff;
-	max-width: 1188px;
+	left: 0;
+	max-width: none;
 	width: 100%;
 }
 
 .panel {
+	box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
 	display: none;
 	position: fixed;
 	top: 0;
@@ -124,6 +167,7 @@ html {
 
 .panel section {
 	box-sizing: border-box;
+	margin: 0 auto;
 	min-height: 100vh;
 	padding-top: 50px;
 }
