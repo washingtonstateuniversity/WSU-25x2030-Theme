@@ -204,6 +204,116 @@ nav .site-menu .dogeared a {
 	padding-right: 2rem;
 }
 
+/* Comment form */
+#comments a {
+	color: rgba(128,128,128,0.6);
+}
+
+#comments a:hover {
+	color: #fff;
+}
+
+.drive-comment-form {
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.drive-comment-form .comment-form-author,
+.drive-comment-form .comment-form-email {
+	padding: 0 0 1em 0;
+	width: 100%;
+}
+
+.drive-comment-form label,
+.drive-comment-form #submit {
+	font-size: 1em;
+	font-weight: 600;
+}
+
+.drive-comment-form input,
+.drive-comment-form textarea {
+	background: none;
+	border-radius: 0;
+	border: 1px solid #b5babe;
+	color: #b5babe;
+	font: 14px/22px 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+	padding: 0.75rem;
+	width: 100%;
+}
+
+.opensansy .drive-comment-form input,
+.opensansy .drive-comment-form textarea {
+	font-family: 'Open Sans', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+}
+
+.drive-comment-form input:focus,
+.drive-comment-form textarea:focus {
+	border-color: #fff;
+	box-shadow: none;
+	color: #b5babe;
+}
+
+.drive-comment-form textarea {
+	display: block;
+	height: 150px;
+	resize: none;
+}
+
+.drive-comment-form #submit {
+	background: #981e32;
+	border: 0;
+	box-shadow: 0 3px 10px 2px rgba(0,0,0,0.2);
+	color: #fff;
+	padding: 1rem 2.5rem;
+	transition: background .4s;
+	width: auto;
+}
+
+.drive-comment-form input#submit:hover,
+.drive-comment-form input#submit:active {
+	background: #c60c30;
+}
+
+/* Comments list */
+.comment-list {
+	padding: 0;
+}
+
+.comment-list li {
+	line-height: 1.6;
+	list-style: none;
+	padding-top: 1rem;
+}
+
+.comment-list article {
+	overflow: auto;
+}
+
+.comment-list article footer {
+	border-top: 0;
+	margin: 0;
+	top: 0;
+}
+
+.comment-author img {
+	box-sizing: border-box;
+	float: left;
+	padding-right: 1rem;
+}
+
+.says,
+.reply {
+	display: none;
+}
+
+.comment-content {
+	margin-left: 99px;
+}
+
+.comment-content p:last-of-type {
+	padding-bottom: 0;
+}
+
 @media only screen and (min-width: 694px) {
 	#jacket #binder main {
 		margin-top: 0;
