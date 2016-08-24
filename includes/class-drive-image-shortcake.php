@@ -1,11 +1,23 @@
 <?php
 
 class Drive_Image_Shortcake {
+
+	/**
+	 * Setup the hooks used with image shortcake.
+	 */
 	public function __construct() {
 		add_filter( 'img_shortcode_ui_args', array( $this, 'add_mobile_image_args' ) );
 		add_filter( 'img_shortcode_output_img_tag', array( $this, 'img_tag_output' ), 10, 2 );
 	}
 
+	/**
+	 * Adjust the arguments passed to Shortcake UI when presenting the screen
+	 * for shortcode creation.
+	 *
+	 * @param array $args An array of default arguments from the Image Shortcake plugin.
+	 *
+	 * @return array The modified list of arguments.
+	 */
 	public function add_mobile_image_args( $args ) {
 		$args['attrs'] = array(
 
@@ -39,6 +51,14 @@ class Drive_Image_Shortcake {
 		return $args;
 	}
 
+	/**
+	 * Parse the image shortcode attributes into HTML output.
+	 *
+	 * @param string $image_html The original HTML output for an image shortcode.
+	 * @param array  $attr       Attributes passed to the image shortcode.
+	 *
+	 * @return string The final HTML output for an image shortcode.
+	 */
 	public function img_tag_output( $image_html, $attr ) {
 		$image_html = '';
 		$mobile_image_html = '';
