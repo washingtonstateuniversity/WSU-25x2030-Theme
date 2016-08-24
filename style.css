@@ -272,6 +272,10 @@ li {
 	padding-right: 2rem;
 }
 
+.mobile-image {
+	display: none;
+}
+
 /* Comment form */
 #comments a {
 	color: rgba(128,128,128,0.6);
@@ -414,5 +418,13 @@ li {
 		padding-right: 2rem;
 		width: 100%;
 	}
+
+    .standard-image {
+	    display: none;
+    }
+
+    .mobile-image {
+	    display: block;
+    }
 }
 /*# sourceMappingURL=style.css.map */

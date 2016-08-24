@@ -14,9 +14,19 @@ class WSU_25_by_2030_Theme {
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new WSU_25_by_2030_Theme;
+			self::$instance->include_extensions();
 			self::$instance->setup_hooks();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Additional files to include as the theme boots.
+	 */
+	public function include_extensions() {
+		include_once( __DIR__ . '/includes/class-drive-image-shortcake.php' );
+
+		new Drive_Image_Shortcake();
 	}
 
 	/**
