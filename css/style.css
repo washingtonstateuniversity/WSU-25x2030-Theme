@@ -151,6 +151,52 @@ nav .site-menu .dogeared a {
 	color: #981e32;
 }
 
+/* Headings and typography */
+section > header {
+	padding: 2rem 2rem 0;
+}
+
+.column > header {
+	padding-bottom: 2rem;
+}
+
+h2,
+h3 {
+	color: #981e32;
+	font-family: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+h2 {
+	font-size: 3.5em;
+	font-weight: 300;
+	letter-spacing: 2px;
+}
+
+.white-text h2 {
+	color: #fff;
+}
+
+#feedback h2,
+h3 {
+	color: #981e32;
+	font-size: 2.75em;
+	font-weight: 900;
+	letter-spacing: normal;
+	text-transform: uppercase;
+}
+
+#feedback h2 {
+	color: #d7dadb;
+}
+
+p,
+li {
+	font-size: 1.1em;
+	font-weight: 300;
+	letter-spacing: .5px;
+	line-height: 1.7;
+}
+
 /* Doormat.js */
 .hentry {
 	display: block;
