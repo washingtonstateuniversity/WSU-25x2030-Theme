@@ -132,9 +132,9 @@
 			progress_indicator();
 			cursor_parallax();
 			story_element_parallax();
+			initialize_doormat();
+			dogear_nav_items();
 		}
-		initialize_doormat();
-		dogear_nav_items();
 	});
 
 }(jQuery));
