@@ -26,6 +26,8 @@ class WSU_25_by_2030_Theme {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'make_the_builder_content', array( $this, 'replace_p_with_figure' ), 99 );
 		add_action( 'wsu_register_inline_svg', array( $this, 'spirit_mark' ) );
+		add_filter( 'comment_form_fields', array( $this, 'comment_form_fields' ) );
+		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ) );
 	}
 
 	/**
@@ -84,6 +86,38 @@ class WSU_25_by_2030_Theme {
 		ob_end_clean();
 
 		wsu_register_inline_svg( 'spirit-mark', $spirit_mark );
+	}
+
+	/**
+	 * Remove the URL field from the comment form.
+	 * Reposition the comment text area below the name and email fields.
+	 *
+	 * @param array $fields The default comment form fields.
+	 */
+	public function comment_form_fields( $fields ) {
+		$comment_field = $fields['comment'];
+
+		unset( $fields['url'] );
+		unset( $fields['comment'] );
+
+		$fields['comment'] = $comment_field;
+
+		return $fields;
+	}
+
+	/**
+	 * A shortcode for displaying the comments template.
+	 */
+	function display_comments_template() {
+		if ( is_singular() && post_type_supports( get_post_type(), 'comments' ) && ( comments_open() || get_comments_number() ) ) {
+			ob_start();
+
+			comments_template();
+
+			return ob_get_clean();
+		}
+
+		return '';
 	}
 }
 
