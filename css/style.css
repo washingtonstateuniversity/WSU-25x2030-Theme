@@ -385,4 +385,10 @@ li {
 	#top .site-menu li {
 		font-size: 0.8em;
 	}
+
+	#stories .column {
+		padding-left: 2rem;
+		padding-right: 2rem;
+		width: 100%;
+	}
 }
