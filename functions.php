@@ -43,6 +43,7 @@ class WSU_25_by_2030_Theme {
 		add_filter( 'make_the_builder_content', array( $this, 'replace_p_with_figure' ), 99 );
 		add_action( 'wsu_register_inline_svg', array( $this, 'spirit_mark' ) );
 		add_filter( 'comment_form_fields', array( $this, 'comment_form_fields' ) );
+		add_filter( 'notify_moderator', '__return_false' );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 	}
 
