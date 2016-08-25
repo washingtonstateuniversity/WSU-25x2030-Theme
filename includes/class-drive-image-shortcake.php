@@ -40,6 +40,14 @@ class Drive_Image_Shortcake {
 			),
 
 			array(
+				'label'       => esc_html__( 'Class', 'image-shortcake' ),
+				'attr'        => 'classes',
+				'type'        => 'text',
+				'encode'      => true,
+				'placeholder' => esc_attr__( 'Space delimited class names to add to the img elements', 'image-shortcake' ),
+			),
+
+			array(
 				'label'       => esc_html__( 'Alt', 'image-shortcake' ),
 				'attr'        => 'alt',
 				'type'        => 'text',
