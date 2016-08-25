@@ -114,7 +114,7 @@
 	 * Setup and handle the parallax effect for the stories section.
 	 */
 	var story_element_parallax = function() {
-		var story_pieces = $('#stories .column');
+		var story_pieces = $( "#stories" ).find( ".column" );
 
 		$(document).on('scroll', function () {
 			$.each(story_pieces, function (index) {
