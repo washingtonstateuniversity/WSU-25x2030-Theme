@@ -419,12 +419,30 @@ li {
 		width: 100%;
 	}
 
-    .standard-image {
-	    display: none;
-    }
+	.story {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+	}
 
-    .mobile-image {
-	    display: block;
-    }
+	.story .excerpt,
+	.excerpt h2 {
+		-webkit-box-ordinal-group: 2;
+		    -ms-flex-order: 1;
+		        order: 1;
+		padding-top: 0;
+	}
+
+	.story .three,
+	.story .four,
+	.standard-image {
+		display: none;
+	}
+
+	.mobile-image {
+		display: block;
+	}
 }
 /*# sourceMappingURL=style.css.map */
