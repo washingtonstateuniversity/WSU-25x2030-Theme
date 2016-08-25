@@ -88,6 +88,7 @@
 				section = li.index() + 2;
 
 			drive_doormat.go_to(section);
+			jQuery.ui.spine.prototype.toggle_mobile_nav();
 		});
 	};
 
@@ -147,6 +148,8 @@
 			story_element_parallax();
 			initialize_doormat();
 			dogear_nav_items();
+		} else {
+			initialize_doormat();
 		}
 	});
 
