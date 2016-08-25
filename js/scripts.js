@@ -117,14 +117,30 @@
 		var story_pieces = $( "#stories" ).find( ".column" );
 
 		$(document).on('scroll', function () {
-			$.each(story_pieces, function (index) {
-				var piece = $(this),
-					velocity = (piece.hasClass('excerpt')) ? -2 + index : 2 + index,
-					y = -($(window).scrollTop() - piece.offset().top) / parseInt(velocity);
+			$.each( story_pieces, function ( index ) {
+				var piece = $( this );
+				var velocity = 0;
+				var y;
 
-				$(this).css('transform', 'translateY(' + y + 'px)');
-			});
-		});
+				if ( piece.hasClass( "speed-faster-one" ) ) {
+					velocity = 2;
+				} else if ( piece.hasClass( "speed-faster-two" ) ) {
+					velocity = 3;
+				} else if ( piece.hasClass( "speed-slower-one" ) ) {
+					velocity = -2;
+				} else if ( piece.hasClass( "speed-slower-two" ) ) {
+					velocity = -3;
+				}
+
+				if ( 0 === velocity ) {
+					return;
+				}
+
+				y = -( $( window ).scrollTop() - piece.offset().top ) / parseInt( velocity );
+
+				$( this ).css( "transform", "translateY(" + y + "px)" );
+			}) ;
+		} );
 	};
 
 	$(document).ready(function () {

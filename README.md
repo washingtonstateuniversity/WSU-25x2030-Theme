@@ -21,3 +21,4 @@
 
 * Stories should be added as _Quarters_ sections, with `story` added to the  _Section Classes_ field.
 * The story text should be in the first or second column, which should have `excerpt` added to the _Column Classes_ field.
+* The *velocity* of each column in a story can be controlled with the `speed-slower-one`, `speed-slower-two`, `speed-faster-one`, and `speed-faster-two` classes.

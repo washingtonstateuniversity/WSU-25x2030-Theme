@@ -5,7 +5,7 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * @var string String used for busting cache on scripts.
 	 */
-	var $script_version = '0001';
+	var $script_version = '0002';
 
 	/**
 	 * @var WSU_25_by_2030_Theme
