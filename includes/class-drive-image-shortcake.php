@@ -75,8 +75,8 @@ class Drive_Image_Shortcake {
 			);
 
 			$image_attr['src'] = esc_url( $attachment[0] );
-			$image_attr['width'] = intval( $attachment[1] );
-			$image_attr['height'] = intval( $attachment[2] );
+			$image_attr['width'] = '';
+			$image_attr['height'] = '';
 
 			foreach ( $image_attr as $attr_name => $attr_value ) {
 				if ( ! empty( $attr_value ) ) {
@@ -98,8 +98,8 @@ class Drive_Image_Shortcake {
 			);
 
 			$image_attr['src'] = esc_url( $attachment[0] );
-			$image_attr['width'] = intval( $attachment[1] );
-			$image_attr['height'] = intval( $attachment[2] );
+			$image_attr['width'] = '';
+			$image_attr['height'] = '';
 
 			foreach ( $image_attr as $attr_name => $attr_value ) {
 				if ( ! empty( $attr_value ) ) {
