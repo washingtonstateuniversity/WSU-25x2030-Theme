@@ -26,6 +26,9 @@ if ( post_password_required() ) {
 		'comment_notes_before' => '',
 		'class_form' => 'drive-comment-form',
 		'title_reply' => '',
+		'title_reply_to' => '',
+		'title_reply_before' => '',
+		'title_reply_after' => '',
 		'cancel_reply_before' => '',
 		'cancel_reply_after' => '',
 		'cancel_reply_link' => '',
@@ -33,30 +36,6 @@ if ( post_password_required() ) {
 		'format' => 'html5',
 	) );
 
-	if ( have_comments() ) {
-		?>
-
-		<?php the_comments_navigation(); ?>
-
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'style' => 'ol',
-				'type' => 'comment',
-				'avatar_size' => 99, // 198/2
-				'format' => 'html5',
-			) );
-			?>
-		</ol>
-
-		<?php the_comments_navigation(); ?>
-
-		<?php
-	}
-
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
-		?><p class="no-comments">Comments are closed.</p><?php
-	}
 	?>
 
 </div>

@@ -43,7 +43,8 @@ class WSU_25_by_2030_Theme {
 		add_filter( 'make_the_builder_content', array( $this, 'replace_p_with_figure' ), 99 );
 		add_action( 'wsu_register_inline_svg', array( $this, 'spirit_mark' ) );
 		add_filter( 'comment_form_fields', array( $this, 'comment_form_fields' ) );
-		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ) );
+		add_filter( 'notify_moderator', '__return_false' );
+		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 	}
 
 	/**
@@ -124,9 +125,20 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * A shortcode for displaying the comments template.
 	 */
-	function display_comments_template() {
+	function display_comments_template( $atts, $content = '' ) {
 		if ( is_singular() && post_type_supports( get_post_type(), 'comments' ) && ( comments_open() || get_comments_number() ) ) {
 			ob_start();
+
+			?>
+			<div class="comment-processing"></div>
+			<div class="comment-success">
+				<?php
+				if ( $content ) {
+					echo wp_kses_post( wpautop( $content ) );
+				}
+				?>
+			</div>
+			<?php
 
 			comments_template();
 

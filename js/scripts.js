@@ -141,6 +141,36 @@
 		} );
 	};
 
+	/**
+	 * Handle comment form submissions through AJAX.
+	 */
+	var ajax_comment_submission = function() {
+		var comment_form = $('#commentform'),
+			action = comment_form.attr('action'),
+			processing = $('.comment-processing'),
+			success = $('.comment-success'),
+			data = '';
+
+		comment_form.submit(function() {
+			data = comment_form.serialize();
+
+			processing.html('<div class="processing-indicator"></div>');
+
+			$.ajax({
+				type: 'post',
+				url: action,
+				data: data,
+				success: function () {
+					processing.html('');
+					success.show();
+					comment_form.find('textarea, input:not([type=submit])').val('');
+				}
+			});
+
+			return false;
+		});
+	};
+
 	$(document).ready(function () {
 		if ( ! is_iOS() && ! is_Android() ) {
 			progress_indicator();
@@ -151,6 +181,7 @@
 		} else {
 			initialize_doormat();
 		}
+		ajax_comment_submission();
 	});
 
 }(jQuery));
