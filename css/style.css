@@ -85,15 +85,10 @@ nav .site-menu .dogeared a {
 	color: #fff;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	justify-content: center;
 	max-width: 1188px;
 	padding-top: 10rem;
 	width: 100%;
-}
-
-.logged-in #top .one {
-	height: calc(100vh - 32px);
 }
 
 #spirit-mark {

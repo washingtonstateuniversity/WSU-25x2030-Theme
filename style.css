@@ -104,17 +104,12 @@ nav .site-menu .dogeared a {
 	-webkit-box-direction: normal;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
-	height: 100vh;
 	-webkit-box-pack: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	max-width: 1188px;
 	padding-top: 10rem;
 	width: 100%;
-}
-
-.logged-in #top .one {
-	height: calc(100vh - 32px);
 }
 
 #spirit-mark {
