@@ -266,6 +266,10 @@ li {
 	padding-right: 1rem;
 }
 
+#stories .three {
+	clear: left;
+}
+
 #stories .two,
 #stories .four {
 	padding-left: 1rem;
