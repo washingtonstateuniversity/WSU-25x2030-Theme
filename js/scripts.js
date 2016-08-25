@@ -88,7 +88,6 @@
 				section = li.index() + 2;
 
 			drive_doormat.go_to(section);
-			li.addClass('dogeared').siblings().removeClass('dogeared');
 		});
 	};
 
@@ -97,17 +96,15 @@
 	 */
 	var dogear_nav_items = function() {
 		window.addEventListener('scroll', function () {
-			if ($(window).width() > 791) {
-				var panels = $('.panel'),
-					nav_li = $('.site-menu li');
+			var panels = $('.panel'),
+				nav_li = $('.site-menu li');
 
-				$.each(panels, function (index) {
-					if ($(this).hasClass('current')) {
-						nav_li.eq(index - 1).addClass('dogeared').siblings().removeClass('dogeared');
-					}
-				});
-			}
-		}, 250);
+			$.each(panels, function (index) {
+				if ($(this).hasClass('current')) {
+					nav_li.eq(index - 1).addClass('dogeared').siblings().removeClass('dogeared');
+				}
+			});
+		} );
 	};
 
 	/**

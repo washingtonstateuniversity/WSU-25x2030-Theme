@@ -5,7 +5,7 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * @var string String used for busting cache on scripts.
 	 */
-	var $script_version = '0003';
+	var $script_version = '0004';
 
 	/**
 	 * @var WSU_25_by_2030_Theme
@@ -54,7 +54,7 @@ class WSU_25_by_2030_Theme {
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
 		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.min.js', array( 'jquery' ), $this->script_version, true );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: 150, snapping: { travel: false, viewport: false } });' );
+		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: false, snapping: { travel: false, viewport: false } });' );
 		wp_add_inline_script( 'wsu-25-by-2030-doormat', "jQuery('.story').wrapAll('<div id=\"stories\" class=\"section-wrapper panel gray-dark-back white-text\" />');", 'before' );
 	}
 
