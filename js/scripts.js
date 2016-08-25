@@ -115,15 +115,13 @@
 		var story_pieces = $('#stories .column');
 
 		$(document).on('scroll', function () {
-			if ($(window).width() > 791) {
-				$.each(story_pieces, function (index) {
-					var piece = $(this),
-						velocity = (piece.hasClass('excerpt')) ? -2 + index : 2 + index,
-						y = -($(window).scrollTop() - piece.offset().top) / parseInt(velocity);
+			$.each(story_pieces, function (index) {
+				var piece = $(this),
+					velocity = (piece.hasClass('excerpt')) ? -2 + index : 2 + index,
+					y = -($(window).scrollTop() - piece.offset().top) / parseInt(velocity);
 
-					$(this).css('transform', 'translateY(' + y + 'px)');
-				});
-			}
+				$(this).css('transform', 'translateY(' + y + 'px)');
+			});
 		});
 	};
 
