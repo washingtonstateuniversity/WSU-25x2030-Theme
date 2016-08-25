@@ -110,8 +110,10 @@
 		}, 250);
 	};
 
+	/**
+	 * Setup and handle the parallax effect for the stories section.
+	 */
 	var story_element_parallax = function() {
-		// Story elements parallax
 		var story_pieces = $('#stories .column');
 
 		$(document).on('scroll', function () {
