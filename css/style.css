@@ -244,6 +244,10 @@ li {
 	padding-right: 1rem;
 }
 
+#stories .three {
+	clear: left;
+}
+
 #stories .two,
 #stories .four {
 	padding-left: 1rem;
@@ -396,11 +400,24 @@ li {
 		width: 100%;
 	}
 
-    .standard-image {
-	    display: none;
-    }
+	.story {
+		display: flex;
+		flex-wrap: wrap;
+	}
 
-    .mobile-image {
-	    display: block;
-    }
+	.story .excerpt,
+	.excerpt h2 {
+		order: 1;
+		padding-top: 0;
+	}
+
+	.story .three,
+	.story .four,
+	.standard-image {
+		display: none;
+	}
+
+	.mobile-image {
+		display: block;
+	}
 }
