@@ -121,13 +121,13 @@
 				var y;
 
 				if ( piece.hasClass( "speed-faster-one" ) ) {
-					velocity = 2;
+					velocity = 20;
 				} else if ( piece.hasClass( "speed-faster-two" ) ) {
-					velocity = 3;
+					velocity = 30;
 				} else if ( piece.hasClass( "speed-slower-one" ) ) {
-					velocity = -2;
+					velocity = -20;
 				} else if ( piece.hasClass( "speed-slower-two" ) ) {
-					velocity = -3;
+					velocity = -30;
 				}
 
 				if ( 0 === velocity ) {
