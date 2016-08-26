@@ -112,6 +112,12 @@ nav .site-menu .dogeared a {
 	width: 100%;
 }
 
+#shield-mark {
+	position: absolute;
+	top: -1rem;
+	width: 8rem;
+}
+
 #spirit-mark {
 	position: absolute;
 	top: 2rem;
