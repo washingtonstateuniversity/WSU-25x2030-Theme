@@ -19,8 +19,8 @@ if ( post_password_required() ) {
 	<?php
 	comment_form( array(
 		'fields' => array(
-			'author' => '<p class="comment-form-author"><label for="author">Name</label> <input id="author" name="author" value="" maxlength="245" aria-required="true" required="required" type="text"></p>',
-			'email' => '<p class="comment-form-email"><label for="email">Email Address</label> <input id="email" name="email" value="" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>',
+			'author' => '<p class="comment-form-author"><label for="author">Name <span class="optional">(Optional)</span></label> <input id="author" name="author" value="" maxlength="245" aria-required="true" required="required" type="text"></p>',
+			'email' => '<p class="comment-form-email"><label for="email">Email Address <span class="optional">(Optional)</span></label> <input id="email" name="email" value="" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>',
 		),
 		'comment_field' => '<p class="comment-form-comment"><label for="comment">Comments</label> <textarea id="comment" name="comment" maxlength="65525" aria-required="true" required="required"></textarea></p>',
 		'comment_notes_before' => '',
