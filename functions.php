@@ -44,6 +44,7 @@ class WSU_25_by_2030_Theme {
 		add_action( 'wsu_register_inline_svg', array( $this, 'spirit_mark' ) );
 		add_filter( 'comment_form_fields', array( $this, 'comment_form_fields' ) );
 		add_filter( 'notify_moderator', '__return_false' );
+		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 	}
 
@@ -146,6 +147,39 @@ class WSU_25_by_2030_Theme {
 		}
 
 		return '';
+	}
+
+	/**
+	 * Display a sequence of pages passed via shortcode as a comma separated
+	 * string of page IDs.
+	 *
+	 * @param $atts
+	 *
+	 * @return mixed|string|void
+	 */
+	public function display_drive_section( $atts ) {
+		if ( ! isset( $atts['ids'] ) ) {
+			return '';
+		}
+
+		$ids = explode( ',', $atts['ids'] );
+		$ids = array_map( 'trim', $ids );
+		$ids = array_map( 'absint', $ids );
+		$content = '';
+
+		foreach ( $ids as $id ) {
+			if ( 0 === $id ) {
+				continue;
+			}
+
+			$post = get_post( $id );
+
+			$content .= $post->post_content;
+		}
+
+		$content = apply_filters( 'the_content', $content );
+
+		return $content;
 	}
 }
 
