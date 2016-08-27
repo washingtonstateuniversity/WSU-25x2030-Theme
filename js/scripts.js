@@ -73,7 +73,7 @@
 			var pos = panels[index - 1].STARTING_POS;
 
 			if (pos !== undefined) {
-				$('body').animate({scrollTop: pos});
+				$( "body,html").animate({scrollTop: pos});
 			}
 		} else {
 			throw Error('Doormat: no panel available at that index!');
