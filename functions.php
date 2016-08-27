@@ -58,7 +58,7 @@ class WSU_25_by_2030_Theme {
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
 		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.min.js', array( 'jquery' ), $this->script_version, true );
 		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: false, snapping: { travel: false, viewport: false } });' );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', "jQuery('.story').wrapAll('<div id=\"stories\" class=\"section-wrapper panel gray-dark-back white-text\" />');", 'before' );
+		wp_add_inline_script( 'wsu-25-by-2030-doormat', "(function ($) { $('.story').wrapAll('<div id=\"stories\" class=\"section-wrapper panel gray-dark-back white-text\" />'); $('.hentry > section:nth-last-child(2), .hentry > section:last-child').wrapAll('<div class=\"section-wrapper panel white-back\" />'); }(jQuery));", 'before' );
 	}
 
 	/**
