@@ -12,6 +12,16 @@ html {
 	background: #fff;
 }
 
+body {
+	font-family: 'proxima-nova', 'Open Sans', Arial, sans-serif;
+	color: #282828;
+	font-weight: 400;
+}
+
+.opensansy main {
+	font-family: 'proxima-nova', 'Open Sans', sans-serif;
+}
+
 .desktop-header {
 	background: #fff;
 	border-bottom: 1px solid #981e32;
@@ -114,8 +124,12 @@ nav .site-menu .dogeared a {
 
 #shield-mark {
 	position: absolute;
-	top: -1rem;
-	width: 8rem;
+	top: 2rem;
+	width: 5rem;
+}
+
+#shield-mark path {
+	fill: #9c9c9c;
 }
 
 #spirit-mark {
@@ -148,17 +162,18 @@ nav .site-menu .dogeared a {
 }
 
 #top p {
-	font-size: 1.2em;
-	font-weight: 300;
+	font-size: 1em;
+	font-weight: 400;
 	letter-spacing: 0.25em;
-	padding-left: 0.25em;
+	letter-spacing: 2px;
+	padding: 6em 0 1.5em .25em;
 	text-transform: uppercase;
 }
 
 #top .site-menu li {
-	font-size: 1.3em;
-	font-weight: 300;
-	padding: 0.5em;
+	font-size: 1.2em;
+	font-weight: 400;
+	padding: .35em;
 }
 
 #top .site-menu a {
@@ -251,6 +266,16 @@ li {
 
 .logged-in .panel section {
 	padding-top: 82px;
+}
+
+.signature {
+	background-image: url('./images/schulzkirk-sig.jpg');
+	background-size: auto;
+	background-repeat: no-repeat;
+	padding: 60px 0 0;
+	margin: 2.5em 0 1.5em;
+	background-position: 0 top;
+	font-weight: 700;
 }
 
 /* Stories */
