@@ -333,6 +333,13 @@ li {
 	display: none;
 }
 
+/* Footer */
+#footer {
+	bottom: 0;
+	height: auto !important;
+	min-height: 0 !important;
+	top: auto;
+}
 
 @-webkit-keyframes spin {
 	0% {
