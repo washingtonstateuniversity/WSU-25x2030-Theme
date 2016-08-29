@@ -31,3 +31,4 @@
 ### Footer
 
 * The penultimate and last (footer) sections of the page should **not** have anything in the _Section Wrapper_ field.
+* The last section of the page (footer) should have a section ID of `footer`.
