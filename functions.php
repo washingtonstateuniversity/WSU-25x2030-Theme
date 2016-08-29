@@ -47,6 +47,7 @@ class WSU_25_by_2030_Theme {
 		add_filter( 'notify_moderator', '__return_false' );
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
+		add_action('init', array( $this, 'apply_comment_filter') );
 	}
 
 	/**
@@ -216,6 +217,35 @@ class WSU_25_by_2030_Theme {
 		$content = apply_filters( 'the_content', $content );
 
 		return $content;
+	}
+
+	/**
+	 * Apply our comment text filter if we're not in the admin.
+	 */
+	public function apply_comment_filter() {
+		if ( ! is_admin() ) {
+			add_filter( 'comment_text', array( $this, 'comment_text' ), 10, 2 );
+		}
+	}
+
+	/**
+	 * Filter comment text.
+	 *
+	 * @return Filtered comment text.
+	 */
+	function comment_text( $comment_text, $comment = null ) {
+		if ( null !== $comment ) {
+			$length = strlen( $comment_text );
+			$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', 250 ) );
+			$excerpt_length = strlen( $excerpt );
+
+			if ( $length > $excerpt_length ) {
+				$comment_remainder = substr( $comment_text, $excerpt_length, $length );
+				$comment = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span><br /><a href="#" class="remainder-toggle">&raquo; Show more</a>';
+			}
+		}
+
+		return $comment;
 	}
 }
 
