@@ -37,6 +37,11 @@ if ( post_password_required() ) {
 	) );
 
 	if ( have_comments() ) {
+		$comments = get_comments( array(
+			'post_id' => get_option( 'page_on_front' ),
+			'status' => 'approve',
+		) );
+
 		wp_list_comments( array(
 			'max_depth' => 1,
 			'style' => 'div',
@@ -44,8 +49,8 @@ if ( post_password_required() ) {
 			'avatar_size' => 0,
 			'format' => 'html5',
 			'per_page' => 5,
-			'reverse_top_level' => true,
-		) );
+			'reverse_top_level' => false,
+		), $comments );
 	}
 	?>
 
