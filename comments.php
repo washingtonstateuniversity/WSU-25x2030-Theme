@@ -37,23 +37,15 @@ if ( post_password_required() ) {
 	) );
 
 	if ( have_comments() ) {
-		?>
-
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'max_depth' => 1,
-				'style' => 'ol',
-				'type' => 'comment',
-				'avatar_size' => 0,
-				'format' => 'html5',
-				'per_page' => 5,
-				'reverse_top_level' => true,
-			) );
-			?>
-		</ol>
-
-		<?php
+		wp_list_comments( array(
+			'max_depth' => 1,
+			'style' => 'div',
+			'type' => 'comment',
+			'avatar_size' => 0,
+			'format' => 'html5',
+			'per_page' => 5,
+			'reverse_top_level' => true,
+		) );
 	}
 	?>
 
