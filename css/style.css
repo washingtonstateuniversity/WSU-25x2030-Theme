@@ -426,12 +426,9 @@ li {
 }
 
 .says,
-.reply {
+.reply,
+.comment-remainder {
 	display: none;
-}
-
-.comment-content {
-	margin-left: 99px;
 }
 
 .comment-content p:last-of-type {
