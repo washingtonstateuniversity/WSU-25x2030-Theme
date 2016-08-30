@@ -229,23 +229,27 @@ class WSU_25_by_2030_Theme {
 	}
 
 	/**
-	 * Filter comment text.
+	 * If a comment exceeds 250 bytes, wrap the remainder in a span and
+	 * add a link that can be clicked to toggle visibility of the remainder.
 	 *
 	 * @return Filtered comment text.
 	 */
 	function comment_text( $comment_text, $comment = null ) {
 		if ( null !== $comment ) {
 			$length = strlen( $comment_text );
-			$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', 250 ) );
-			$excerpt_length = strlen( $excerpt );
+			$excerpt_length = 250;
 
 			if ( $length > $excerpt_length ) {
-				$comment_remainder = substr( $comment_text, $excerpt_length, $length );
-				$comment = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span><br /><a href="#" class="remainder-toggle">&raquo; Show more</a>';
+				$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', $excerpt_length ) );
+
+				if ( '' !== $excerpt ) {
+					$comment_remainder = substr( $comment_text, strlen( $excerpt ), $length );
+					$comment_text = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span><br /><a href="#" class="remainder-toggle">&raquo; Show more</a>';
+				}
 			}
 		}
 
-		return $comment;
+		return $comment_text;
 	}
 }
 
