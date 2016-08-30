@@ -39,6 +39,7 @@ class WSU_25_by_2030_Theme {
 	 * Setup hooks to include.
 	 */
 	public function setup_hooks() {
+		add_filter( 'spine_child_theme_version', array( $this, 'theme_version' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'make_the_builder_content', array( $this, 'replace_p_with_figure' ), 99 );
 		add_action( 'wsu_register_inline_svg', array( $this, 'spirit_mark' ) );
@@ -48,6 +49,17 @@ class WSU_25_by_2030_Theme {
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
+	}
+
+	/**
+	 * Provide a theme version for use in cache busting.
+	 *
+	 * @since 0.0.16
+	 *
+	 * @return string
+	 */
+	public function theme_version() {
+		return $this->script_version;
 	}
 
 	/**
