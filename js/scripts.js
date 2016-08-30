@@ -171,6 +171,32 @@
 		});
 	};
 
+	/**
+	 * Toggle comment text display.
+	 */
+	var toggle_comment_text = function() {
+		$('.remainder-toggle').on('click', function (e) {
+			e.preventDefault();
+
+			var link = $(this),
+				ellipsis = link.siblings('.ellipsis'),
+				remainder = link.siblings('.comment-remainder');
+
+			if ( link.hasClass('close') ) {
+				link.removeClass('close');
+				remainder.hide();
+				ellipsis.show();
+				link.text('» Show more');
+			} else {
+				link.addClass('close');
+				ellipsis.hide();
+				remainder.show();
+				link.text('« Show less');
+			}
+
+		});
+	};
+
 	$(document).ready(function () {
 		if ( ! is_iOS() && ! is_Android() ) {
 			progress_indicator();
@@ -182,6 +208,7 @@
 			initialize_doormat();
 		}
 		ajax_comment_submission();
+		toggle_comment_text();
 	});
 
 }(jQuery));

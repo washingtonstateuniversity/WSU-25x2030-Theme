@@ -47,6 +47,7 @@ class WSU_25_by_2030_Theme {
 		add_filter( 'notify_moderator', '__return_false' );
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
+		add_action( 'init', array( $this, 'apply_comment_filter' ) );
 	}
 
 	/**
@@ -216,6 +217,39 @@ class WSU_25_by_2030_Theme {
 		$content = apply_filters( 'the_content', $content );
 
 		return $content;
+	}
+
+	/**
+	 * Apply our comment text filter if we're not in the admin.
+	 */
+	public function apply_comment_filter() {
+		if ( ! is_admin() ) {
+			add_filter( 'comment_text', array( $this, 'comment_text' ), 10, 2 );
+		}
+	}
+
+	/**
+	 * If a comment exceeds 250 bytes, wrap the remainder in a span and
+	 * add a link that can be clicked to toggle visibility of the remainder.
+	 *
+	 * @return Filtered comment text.
+	 */
+	function comment_text( $comment_text, $comment = null ) {
+		if ( null !== $comment ) {
+			$length = strlen( $comment_text );
+			$excerpt_length = 250;
+
+			if ( $length > $excerpt_length ) {
+				$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', $excerpt_length ) );
+
+				if ( '' !== $excerpt ) {
+					$comment_remainder = substr( $comment_text, strlen( $excerpt ), $length );
+					$comment_text = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span><br /><a href="#" class="remainder-toggle">&raquo; Show more</a>';
+				}
+			}
+		}
+
+		return $comment_text;
 	}
 }
 

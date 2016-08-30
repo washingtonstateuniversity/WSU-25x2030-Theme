@@ -399,21 +399,16 @@ li {
 }
 
 /* Comments list */
-.comment-list {
-	padding: 0;
-}
-
-.comment-list li {
+.comment {
 	line-height: 1.6;
-	list-style: none;
-	padding-top: 1rem;
+	padding: .75rem 0;
 }
 
-.comment-list article {
+.comment article {
 	overflow: auto;
 }
 
-.comment-list article footer {
+.comment article footer {
 	border-top: 0;
 	margin: 0;
 	top: 0;
@@ -426,12 +421,9 @@ li {
 }
 
 .says,
-.reply {
+.reply,
+.comment-remainder {
 	display: none;
-}
-
-.comment-content {
-	margin-left: 99px;
 }
 
 .comment-content p:last-of-type {
