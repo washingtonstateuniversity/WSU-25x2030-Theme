@@ -22,6 +22,25 @@ body {
 	z-index: 999;
 }
 
+.bottom-plus {
+	padding-bottom: 8em;
+}
+
+.gray-lighter-back {
+	background-color: #f1f1f1;
+}
+
+.crimsonbold {
+	color: #981e32;
+	font-weight: 700;
+	font-size: 1.15em;
+}
+
+.smaller {
+	font-size: 1em;
+	padding-bottom: 2em;
+}
+
 .progress {
 	background: #f1f1f1;
 	height: 100%;
@@ -57,6 +76,8 @@ nav .site-menu li {
 	float: left;
 	line-height: 1;
 	padding: 0 1rem;
+	letter-spacing: 0;
+	font-size: 1em;
 }
 
 nav .site-menu li + li {
@@ -64,7 +85,11 @@ nav .site-menu li + li {
 }
 
 nav .site-menu a {
-	color: #a6a6a6;
+	color: #282828;
+}
+
+nav .site-menu a:hover {
+	color: #525252;
 }
 
 nav .site-menu .dogeared a {
@@ -105,6 +130,7 @@ nav .site-menu .dogeared a {
 	position: absolute;
 	top: 2rem;
 	width: 5rem;
+	height: 7rem;
 }
 
 #shield-mark path {
@@ -167,6 +193,27 @@ nav .site-menu .dogeared a {
 	color: #981e32;
 }
 
+#top .caption-top {
+	font-size: .9em;
+	color: #919191;
+	text-align: right;
+	text-transform: none;
+	letter-spacing: 1px;
+}
+
+.wsu-top a {
+	text-decoration: none;
+	color: #fff;
+	transition: .4s, color .4s;
+	padding-bottom: 2px;
+}
+
+.wsu-top a:hover {
+	color: #d7dadb;
+	border-bottom: solid 1px #d7dadb;
+	padding-bottom: 2px;
+}
+
 /* Headings and typography */
 section > header {
 	padding: 2rem 2rem 0;
@@ -183,9 +230,10 @@ h3 {
 }
 
 h2 {
-	font-size: 3.5em;
+	font-size: 3em;
 	font-weight: 300;
-	letter-spacing: 2px;
+	letter-spacing: 0;
+	padding-top: 6rem;
 }
 
 .white-text h2 {
@@ -208,9 +256,9 @@ h3 {
 p,
 li {
 	font-size: 1.1em;
-	font-weight: 300;
+	font-weight: 400;
 	letter-spacing: .5px;
-	line-height: 1.7;
+	line-height: 1.5;
 }
 
 /* Doormat.js */
@@ -233,6 +281,11 @@ li {
 	position: fixed;
 	top: 0;
 	visibility: hidden;
+}
+
+/* Hide the box shadow on the end of the last panel */
+.panel:last-of-type {
+	box-shadow: none;
 }
 
 .panel section {
@@ -278,6 +331,14 @@ li {
 #stories .four {
 	padding-left: 1rem;
 	padding-right: 2rem;
+}
+
+#stories h3 {
+	color: #d7dadb;
+	font-size: 2.75em;
+	font-weight: 900;
+	letter-spacing: normal;
+	text-transform: uppercase;
 }
 
 .mobile-image {
@@ -358,12 +419,31 @@ li {
 	display: none;
 }
 
+.logged-in-as {
+	/* display: none; */
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: .75em;
+	letter-spacing: .5px;
+}
+
+.optional {
+	color: #919191;
+	font-weight: 400;
+	font-size: .75em;
+	letter-spacing: .5px;
+}
+
 /* Footer */
 #footer {
 	bottom: 0;
 	height: auto !important;
 	min-height: 0 !important;
 	top: auto;
+}
+
+#footer figure img {
+	width: 40%;
 }
 
 @-webkit-keyframes spin {
@@ -482,4 +562,206 @@ li {
 	.mobile-image {
 		display: block;
 	}
+}
+
+
+/* ---------- NEW ---------- */
+img.size-full.alignnone, img.size-medium.alignnone, #stories .column .r50, #stories .column .r75, #stories .column .l50, #stories .column .l75, #stories .column .right50, #stories .column .right75, #stories .column .left50, #stories .column .left75, #stories .column .std {
+	-webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.35);
+	-moz-box-shadow: 0 0 15px 0 rgba(0,0,0,0.35);
+	box-shadow: 0 0 15px 0 rgba(0,0,0,0.35);
+}
+
+img.size-full.alignnone.noboxshadow, img.size-medium.alignnone.noboxshadow {
+	box-shadow: none;
+}
+
+h5.crmbold {
+	color: #981e32;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: .0625rem;
+}
+
+p a.btncrm {
+	color: #c8102e;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: .0625rem;
+	-webkit-transition: background .4s, color .4s;
+	transition: background .4s, color .4s;
+}
+
+p a.btncrm:before {
+	font-size: 1.4rem;
+	content: "\00bb";
+	padding-right: 4px;
+}
+
+p a.btncrm:hover {
+	color: #fff;
+}
+
+.asterisk-divider {
+	font-size: 2.4rem;
+	font-weight: 100;
+	color: #981e32;
+	display: block;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 2em 0 0;
+	margin-bottom: .25em;
+	line-height: .5;
+}
+
+.previous, .upcoming {
+	font-size: .7rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	line-height: .5;
+	padding-top: 5px;
+	letter-spacing: .5px;
+}
+
+.previous {
+	color: rgba(0,0,0,0.3);
+}
+
+.upcoming {
+	color: #981e32;
+}
+
+.gryscale, .gryscale h5, .gryscale p {
+	/* ----------- wrap past events in div with grayscale class -------------- */
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1);
+	color: rgba(0,0,0,0.3);
+}
+
+/* ---------- Story images resizing ---------- */
+@media all and (min-width: 601px) {
+	#stories .column .r50 {
+		/*  scale to 50% and float to right  */
+		max-width: 50%;
+		float: right;
+	}
+
+	#stories .column .r75 {
+		/*  scale to 75% and float to right  */
+		max-width: 75%;
+		float: right;
+	}
+
+	#stories .column .l50 {
+		/*  scale to 50% and float to left  */
+		max-width: 50%;
+		float: left;
+	}
+
+	#stories .column .l75 {
+		/*  scale to 75% and float to left  */
+		max-width: 75%;
+		float: left;
+	}
+
+	#stories .column .right50 {
+		/*  scale to 50% and float to right  */
+		max-width: 50%;
+		float: right;
+	}
+
+	#stories .column .right75 {
+		/*  scale to 75% and float to right  */
+		max-width: 75%;
+		float: right;
+	}
+
+	#stories .column .left50 {
+		/*  scale to 50% and float to left  */
+		max-width: 50%;
+		float: left;
+	}
+
+	#stories .column .left75 {
+		/*  scale to 75% and float to left  */
+		max-width: 75%;
+		float: left;
+	}
+}
+
+/**** TablePress ****/
+.dataTables_length,
+.dataTables_filter {
+	margin-bottom: 1em;
+}
+
+.dataTables_wrapper label input {
+	height: 25px;
+	background: #ebe8de;
+	border-radius: 0;
+	border: 1px solid #cacaca;
+	font-size: 1.5rem;
+	color: #585858;
+}
+
+.dataTables_wrapper label input,
+.dataTables_wrapper label select {
+	height: 25px;
+	font-size: .8rem;
+}
+
+table.tablepress thead tr th,
+.tablepress tfoot th {
+	font-size: 1.1rem;
+	border-bottom: 1px solid #e5e5e5;
+	background: transparent;
+}
+
+.tablepress tfoot th {
+	font-size: 1rem;
+	color: #585858;
+}
+
+.tablepress .sorting:hover,
+.tablepress .sorting_asc,
+.tablepress .sorting_desc {
+	color: black;
+	background: #f7f7f7;
+}
+
+.dataTables_paginate a,
+.paging_simple .paginate_button.next:after,
+.paging_simple .paginate_button.previous:before {
+	text-shadow: none;
+	color: #4f868e !important;
+	border: none;
+}
+
+.tablepress-table-description {
+	margin: 2em 0;
+}
+
+#tablepress-1 .column-1 {
+	padding: 1em 1.5em;
+}
+
+#tablepress-1 .column-2 {
+	border-left: solid 1px #981e32;
+	padding: 1em 1.5em;
+}
+
+#tablepress-1 {
+	border-top: solid 1px #981e32;
+}
+
+/* Comment button */
+.drive-comment-form #submit {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 0;
+}
+
+/* Top image positioning */
+#top .image {
+	background-position: center;
 }
