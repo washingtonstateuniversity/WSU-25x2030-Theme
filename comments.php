@@ -48,7 +48,7 @@ if ( post_password_required() ) {
 			'type' => 'comment',
 			'avatar_size' => 0,
 			'format' => 'html5',
-			'per_page' => 5,
+			'per_page' => 20,
 			'reverse_top_level' => false,
 		), $comments );
 	}
