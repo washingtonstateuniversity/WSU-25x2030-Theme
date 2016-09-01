@@ -49,6 +49,11 @@ class WSU_25_by_2030_Theme {
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
+
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );
 	}
 
 	/**
