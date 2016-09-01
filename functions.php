@@ -54,6 +54,7 @@ class WSU_25_by_2030_Theme {
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		add_filter( 'wp_resource_hints', array( $this, 'remove_s_w_org_dns_prefetch' ), 10, 2 );
 	}
 
 	/**
@@ -267,6 +268,28 @@ class WSU_25_by_2030_Theme {
 		}
 
 		return $comment_text;
+	}
+
+	/**
+	 * Removes the s.w.org DNS prefetch.
+	 *
+	 * Code in this method is originally from GPL licensed https://wordpress.org/plugins/disable-emojis/
+	 *
+	 * @since 0.0.18
+	 *
+	 * @param  array  $urls          URLs to print for resource hints.
+	 * @param  string $relation_type The relation type the URLs are printed for.
+	 * @return array                 Difference betwen the two arrays.
+	 */
+	public function remove_s_w_org_dns_prefetch( $urls, $relation_type ) {
+		if ( 'dns-prefetch' === $relation_type ) {
+			/** This filter is documented in wp-includes/formatting.php */
+			$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+
+			$urls = array_diff( $urls, array( $emoji_svg_url ) );
+		}
+
+		return $urls;
 	}
 }
 
