@@ -32,7 +32,7 @@ if ( post_password_required() ) {
 		'cancel_reply_before' => '',
 		'cancel_reply_after' => '',
 		'cancel_reply_link' => '',
-		'label_submit' => 'Submit Feedback',
+		'label_submit' => 'Submit feedback',
 		'format' => 'html5',
 	) );
 
