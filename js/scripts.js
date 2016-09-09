@@ -197,6 +197,28 @@
 		});
 	};
 
+	/**
+	 * Comment pagination.
+	 */
+	var comment_pagination = function() {
+		$('.comment-nav').on('click', 'a', function (e) {
+			e.preventDefault();
+
+			var data = {
+					action: 'comment_navigation',
+					url: $(this).attr('href'),
+					nonce: comments.nonce
+				};
+
+			$.post(comments.ajax_url, data, function (response) {
+				var response_data = $.parseJSON(response);
+
+				$('.comment-list').html(response_data.comments);
+				$('.comment-nav').html(response_data.navigation);
+			});
+		});
+	};
+
 	$(document).ready(function () {
 		if ( ! is_iOS() && ! is_Android() ) {
 			progress_indicator();
@@ -204,6 +226,7 @@
 			story_element_parallax();
 			initialize_doormat();
 			dogear_nav_items();
+			comment_pagination();
 		} else {
 			initialize_doormat();
 		}
