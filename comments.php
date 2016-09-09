@@ -42,15 +42,32 @@ if ( post_password_required() ) {
 			'status' => 'approve',
 		) );
 
+		?><div class="comment-list"><?php
+
 		wp_list_comments( array(
 			'max_depth' => 1,
 			'style' => 'div',
 			'type' => 'comment',
 			'avatar_size' => 0,
 			'format' => 'html5',
-			'per_page' => 20,
 			'reverse_top_level' => false,
 		), $comments );
+
+		?></div><?php
+
+		if ( get_comment_pages_count() > 1 ) {
+
+			?><div class="comment-nav"><?php
+
+			$comment_navigation_args = array(
+				'prev_text' => '&laquo; Newer comments',
+				'next_text' => '&raquo; Older comments',
+			);
+
+			the_comments_navigation( $comment_navigation_args );
+
+			?></div><?php
+		}
 	}
 	?>
 
