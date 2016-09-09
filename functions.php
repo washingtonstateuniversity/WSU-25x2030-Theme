@@ -8,6 +8,11 @@ class WSU_25_by_2030_Theme {
 	var $script_version = '0.0.18';
 
 	/**
+	 * @var int Comments to display per page.
+	 */
+	var $comments_per_page = 5;
+
+	/**
 	 * @var WSU_25_by_2030_Theme
 	 */
 	private static $instance;
@@ -49,6 +54,9 @@ class WSU_25_by_2030_Theme {
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
+		add_filter( 'option_comments_per_page', array( $this, 'drive_comments_per_page' ) );
+		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_ccomments' ) );
+		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_ccomments' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -73,6 +81,10 @@ class WSU_25_by_2030_Theme {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery', 'wsu-25-by-2030-doormat' ), $this->script_version, true );
+		wp_localize_script( 'wsu-25-by-2030', 'comments', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'comments-paging' ),
+		) );
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
 		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.min.js', array( 'jquery' ), $this->script_version, true );
@@ -290,6 +302,72 @@ class WSU_25_by_2030_Theme {
 		}
 
 		return $urls;
+	}
+
+	/**
+	 * The number of comments to display per page.
+	 *
+	 * @since 0.0.19
+	 *
+	 * @param  int $comments_per_page The value from "Settings" > "Discussion" > "Break comments into…"
+	 *
+	 * @return int
+	 */
+	public function drive_comments_per_page( $comments_per_page ) {
+		if ( wp_is_mobile() ) {
+			return 1;
+		} else {
+			return $this->comments_per_page;
+		}
+	}
+
+	/**
+	 * Retrieve the requested page of comments.
+	 */
+	public function ajax_ccomments() {
+		check_ajax_referer( 'comments-paging', 'nonce' );
+
+		$results = array();
+
+		if ( isset( $_POST['url'] ) ) {
+			$url = esc_url( $_POST['url'] );
+		}
+
+		$page = ( strpos( $url, 'comment-page-' ) ) ? substr( $url, strpos( $url, 'comment-page-' ) + 13, -10 ) : 1;
+
+		$comments = get_comments( array(
+			'post_id' => get_option( 'page_on_front' ),
+			'status' => 'approve',
+		) );
+
+		$comment_list = wp_list_comments( array(
+			'max_depth' => 1,
+			'style' => 'div',
+			'type' => 'comment',
+			'page' => $page,
+			'per_page' => $this->comments_per_page,
+			'avatar_size' => 0,
+			'format' => 'html5',
+			'reverse_top_level' => false,
+			'echo' => false,
+		), $comments );
+
+		$results['comments'] = $comment_list;
+
+		set_query_var( 'cpage', $page );
+
+		$comment_nav_args = array(
+			'prev_text' => '&laquo; Newer comments',
+			'next_text' => '&raquo; Older comments',
+		);
+
+		$comment_navigation = get_the_comments_navigation( $comment_nav_args );
+
+		$results['navigation'] = $comment_navigation;
+
+		echo wp_json_encode( $results );
+
+		exit();
 	}
 }
 
