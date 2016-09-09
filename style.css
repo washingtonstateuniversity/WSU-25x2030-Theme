@@ -534,6 +534,26 @@ li {
 	padding-bottom: 0;
 }
 
+/* Comment navigation */
+.nav-previous {
+	float: left;
+}
+
+.nav-next {
+	float: right;
+}
+
+.nav-links a {
+	border: 1px solid rgba(128,128,128,0.6);
+	padding: 0.5em 1em;
+	-webkit-transition: border-color .4s, color .4s;
+	transition: border-color .4s, color .4s;
+}
+
+.nav-links a:hover {
+	border-color: #fff;
+}
+
 @media only screen and (min-width: 694px) {
 	#jacket #binder main {
 		margin-top: 0;
