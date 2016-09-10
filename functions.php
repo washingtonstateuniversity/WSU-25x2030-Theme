@@ -55,8 +55,8 @@ class WSU_25_by_2030_Theme {
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
 		add_filter( 'option_comments_per_page', array( $this, 'drive_comments_per_page' ) );
-		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_ccomments' ) );
-		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_ccomments' ) );
+		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_comments' ) );
+		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -322,9 +322,40 @@ class WSU_25_by_2030_Theme {
 	}
 
 	/**
+	 * Retrive the navigation markup for the current page of comments.
+	 *
+	 * @return string Navigation markup.
+	 */
+	public function comment_navigation( $page, $comments ) {
+		$navigation = '';
+
+		$comment_pages_count = get_comment_pages_count( $comments, $this->comments_per_page );
+
+		if ( $comment_pages_count > 1 ) {
+			$prev = intval( $page ) - 1;
+
+			if ( intval( $page ) > 1 ) {
+				$url = get_comments_pagenum_link( $prev );
+				$navigation .= '<div class="nav-previous"><a href="' . esc_url( $url ) . '">Newer comments</a></div>';
+			}
+
+			$next = intval( $page ) + 1;
+
+			if ( intval( $page ) < $comment_pages_count ) {
+				$url = get_comments_pagenum_link( $next, $comment_pages_count );
+				$navigation .= '<div class="nav-next"><a href="' . esc_url( $url ) . '">Older comments</a></div>';
+			}
+
+			$navigation = _navigation_markup( $navigation, 'comment-navigation', 'Comments navigation' );
+		}
+
+		return $navigation;
+	}
+
+	/**
 	 * Retrieve the requested page of comments.
 	 */
-	public function ajax_ccomments() {
+	public function ajax_comments() {
 		check_ajax_referer( 'comments-paging', 'nonce' );
 
 		$results = array();
@@ -354,16 +385,9 @@ class WSU_25_by_2030_Theme {
 
 		$results['comments'] = $comment_list;
 
-		set_query_var( 'cpage', $page );
+		$results['navigation'] = $this->comment_navigation( $page, $comments );
 
-		$comment_nav_args = array(
-			'prev_text' => '&laquo; Newer comments',
-			'next_text' => '&raquo; Older comments',
-		);
-
-		$comment_navigation = get_the_comments_navigation( $comment_nav_args );
-
-		$results['navigation'] = $comment_navigation;
+		$results['page'] = $page;
 
 		echo wp_json_encode( $results );
 
