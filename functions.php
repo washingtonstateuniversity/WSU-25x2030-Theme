@@ -253,9 +253,11 @@ class WSU_25_by_2030_Theme {
 	 * Apply our comment text filter if we're not in the admin.
 	 */
 	public function apply_comment_filter() {
-		if ( ! is_admin() ) {
-			add_filter( 'comment_text', array( $this, 'comment_text' ), 10, 2 );
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+			return;
 		}
+
+		add_filter( 'comment_text', array( $this, 'comment_text' ), 10, 2 );
 	}
 
 	/**
