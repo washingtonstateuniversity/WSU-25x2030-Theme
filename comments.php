@@ -60,8 +60,8 @@ if ( post_password_required() ) {
 			?><div class="comment-nav"><?php
 
 			$comment_navigation_args = array(
-				'prev_text' => '&laquo; Newer comments',
-				'next_text' => '&raquo; Older comments',
+				'prev_text' => 'Newer comments',
+				'next_text' => 'Older comments',
 			);
 
 			the_comments_navigation( $comment_navigation_args );

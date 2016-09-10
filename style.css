@@ -535,6 +535,10 @@ li {
 }
 
 /* Comment navigation */
+.comment-nav {
+	padding-top: 2rem;
+}
+
 .nav-previous {
 	float: left;
 }
@@ -552,6 +556,14 @@ li {
 
 .nav-links a:hover {
 	border-color: #fff;
+}
+
+.nav-previous a:before {
+	content: '\00ab\00a0';
+}
+
+.nav-next a:after {
+	content: ' \00bb';
 }
 
 @media only screen and (min-width: 694px) {
