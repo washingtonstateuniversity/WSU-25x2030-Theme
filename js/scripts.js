@@ -175,7 +175,7 @@
 	 * Toggle comment text display.
 	 */
 	var toggle_comment_text = function() {
-		$('.remainder-toggle').on('click', function (e) {
+		$('.comment-list').on('click', '.remainder-toggle', function (e) {
 			e.preventDefault();
 
 			var link = $(this),
