@@ -54,7 +54,6 @@ class WSU_25_by_2030_Theme {
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
 		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
-		add_filter( 'option_comments_per_page', array( $this, 'drive_comments_per_page' ) );
 		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_comments' ) );
 		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
 
@@ -304,23 +303,6 @@ class WSU_25_by_2030_Theme {
 		}
 
 		return $urls;
-	}
-
-	/**
-	 * The number of comments to display per page.
-	 *
-	 * @since 0.0.19
-	 *
-	 * @param  int $comments_per_page The value from "Settings" > "Discussion" > "Break comments into…"
-	 *
-	 * @return int
-	 */
-	public function drive_comments_per_page( $comments_per_page ) {
-		if ( wp_is_mobile() ) {
-			return 1;
-		} else {
-			return $this->comments_per_page;
-		}
 	}
 
 	/**
