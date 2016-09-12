@@ -326,6 +326,11 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * Retrive the navigation markup for the current page of comments.
 	 *
+	 * @since 0.0.19
+	 *
+	 * @param int   $page     The page of comments to retrieve.
+	 * @param array $comments Array of comment objects.
+	 *
 	 * @return string Navigation markup.
 	 */
 	public function comment_navigation( $page, $comments ) {
@@ -356,6 +361,8 @@ class WSU_25_by_2030_Theme {
 
 	/**
 	 * Retrieve the requested page of comments.
+	 *
+	 * @since 0.0.19
 	 */
 	public function ajax_comments() {
 		check_ajax_referer( 'comments-paging', 'nonce' );
