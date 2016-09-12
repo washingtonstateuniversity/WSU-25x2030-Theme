@@ -510,6 +510,37 @@ li {
 	padding-bottom: 0;
 }
 
+/* Comment navigation */
+.comment-nav {
+	padding-top: 2rem;
+}
+
+.nav-previous {
+	float: left;
+}
+
+.nav-next {
+	float: right;
+}
+
+.nav-links a {
+	border: 1px solid rgba(128,128,128,0.6);
+	padding: 0.5em 1em;
+	transition: border-color .4s, color .4s;
+}
+
+.nav-links a:hover {
+	border-color: #fff;
+}
+
+.nav-previous a:before {
+	content: '\00ab\00a0';
+}
+
+.nav-next a:after {
+	content: ' \00bb';
+}
+
 @media only screen and (min-width: 694px) {
 	#jacket #binder main {
 		margin-top: 0;
