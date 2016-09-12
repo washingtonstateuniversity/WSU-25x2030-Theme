@@ -165,6 +165,7 @@ nav .site-menu .dogeared a {
 }
 
 #top .image {
+	background-position: center;
 	background-size: cover;
 	height: 120%;
 	left: -10%;
@@ -828,10 +829,5 @@ table.tablepress thead tr th,
 
 #tablepress-1 {
 	border-top: solid 1px #981e32;
-}
-
-/* Top image positioning */
-#top .image {
-	background-position: center;
 }
 /*# sourceMappingURL=style.css.map */
