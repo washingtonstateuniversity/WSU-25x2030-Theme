@@ -53,7 +53,9 @@ if ( post_password_required() ) {
 			'reverse_top_level' => false,
 		), $comments );
 
-		?></div><?php
+		?>
+		</div>
+		<?php
 
 		if ( get_comment_pages_count() > 1 ) {
 
