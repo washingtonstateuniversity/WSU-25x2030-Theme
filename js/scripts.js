@@ -204,6 +204,10 @@
 		$('.comment-nav').on('click', 'a', function (e) {
 			e.preventDefault();
 
+			$('html, body').animate({
+				scrollTop: $('.comment-list').offset().top - 50
+			}, 100);
+
 			var data = {
 					action: 'comment_navigation',
 					url: $(this).attr('href'),
