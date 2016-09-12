@@ -559,16 +559,18 @@ li {
 	padding-top: 1rem;
 }
 
-.nav-links a {
-	border: 1px solid rgba(128,128,128,0.6);
+#comments .nav-links a {
+	border: 1px solid #b3b3b3;
+	color: #b3b3b3;
 	display: block;
 	padding: 0.5em 1em;
 	-webkit-transition: border-color .4s, color .4s;
 	transition: border-color .4s, color .4s;
 }
 
-.nav-links a:hover {
+#comments .nav-links a:hover {
 	border-color: #fff;
+	color: #fff;
 }
 
 .nav-previous a:before {
