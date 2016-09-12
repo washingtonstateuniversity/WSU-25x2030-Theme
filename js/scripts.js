@@ -224,14 +224,12 @@
 			progress_indicator();
 			cursor_parallax();
 			story_element_parallax();
-			initialize_doormat();
 			dogear_nav_items();
-			comment_pagination();
-		} else {
-			initialize_doormat();
 		}
+		initialize_doormat();
 		ajax_comment_submission();
 		toggle_comment_text();
+		comment_pagination();
 	});
 
 }(jQuery));
