@@ -70,17 +70,6 @@ module.exports = function(grunt) {
             temp: [ 'tmp-style.css', 'tmp-style.css.map' ]
         },
 
-        uglify: {
-            scripts: {
-                src: 'js/scripts.js',
-                dest: 'js/scripts.min.js'
-            },
-            doormat: {
-                src: 'js/doormat.js',
-                dest: 'js/doormat.min.js'
-            }
-        },
-
         phpcs: {
             plugin: {
                 src: './'
@@ -97,9 +86,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-contrib-concat" );
     grunt.loadNpmTasks( "grunt-contrib-csslint" );
     grunt.loadNpmTasks( "grunt-contrib-clean" );
-    grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-phpcs" );
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean', 'uglify']);
+    grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean']);
 };

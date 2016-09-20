@@ -79,16 +79,22 @@ class WSU_25_by_2030_Theme {
 	 * Enqueue the scripts used in the theme.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery', 'wsu-25-by-2030-doormat' ), $this->script_version, true );
-		wp_localize_script( 'wsu-25-by-2030', 'comments', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( 'comments-paging' ),
-		) );
+		$post = get_post();
+
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
-		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.min.js', array( 'jquery' ), $this->script_version, true );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: false, snapping: { travel: false, viewport: false } });' );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', "(function ($) { $('.story').wrapAll('<div id=\"stories\" class=\"section-wrapper panel gray-dark-back white-text\" />'); $('.hentry > section:nth-last-child(2), .hentry > section:last-child').wrapAll('<div class=\"section-wrapper panel white-back\" />'); }(jQuery));", 'before' );
+
+		if ( is_front_page() ) {
+			wp_enqueue_script( 'wsu-25-by-2030-home', get_stylesheet_directory_uri() . '/js/home.js', array( 'jquery' ), $this->script_version, true );
+		}
+
+		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'comments_template' ) ) {
+			wp_enqueue_script( 'wsu-25-by-2030-comments', get_stylesheet_directory_uri() . '/js/comments.js', array( 'jquery' ), $this->script_version, true );
+			wp_localize_script( 'wsu-25-by-2030-comments', 'comments', array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce' => wp_create_nonce( 'comments-paging' ),
+			) );
+		}
 	}
 
 	/**
@@ -106,15 +112,13 @@ class WSU_25_by_2030_Theme {
 	public function shield_mark() {
 		ob_start();
 		?>
-		<svg version="1.1" id="shield-mark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-		     viewBox="0 0 82.7 101.6" enable-background="new 0 0 82.7 101.6" xml:space="preserve">
-<g>
-	<path fill="#FFFFFF" d="M55.9,85.6L41.3,96L26.7,85.6C16.3,78.5,7.4,72.4,2.7,63.2C6.6,80.5,23.5,87,41.3,100.9
+		<svg id="shield-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.7 101.6">
+			<path fill="#9c9c9c" d="M55.9,85.6L41.3,96L26.7,85.6C16.3,78.5,7.4,72.4,2.7,63.2C6.6,80.5,23.5,87,41.3,100.9
 		C59,87,76,80.5,79.8,63.2C75.2,72.4,66.3,78.5,55.9,85.6z"/>
-	<g>
-		<path fill="#FFFFFF" d="M55.8,22.4c-2.2-1.2-7.5-0.8-9.3,0.5c-3,2-2.5,5.6-2.4,5.7c0.6-1,1.6-2.5,3.1-3.5c1.9-1.3,5.1-2.3,8.1-2.1
+			<g>
+				<path fill="#9c9c9c" d="M55.8,22.4c-2.2-1.2-7.5-0.8-9.3,0.5c-3,2-2.5,5.6-2.4,5.7c0.6-1,1.6-2.5,3.1-3.5c1.9-1.3,5.1-2.3,8.1-2.1
 			C56,23,56.6,22.8,55.8,22.4z"/>
-		<path fill="#FFFFFF" d="M0.7,0.9v1.8c1.1,0.4,1.5,0.7,1.6,2.4V47c0,23.3,19,29.4,38.9,45.1c20-15.7,39-21.8,39-45.1V4.6
+				<path fill="#9c9c9c" d="M0.7,0.9v1.8c1.1,0.4,1.5,0.7,1.6,2.4V47c0,23.3,19,29.4,38.9,45.1c20-15.7,39-21.8,39-45.1V4.6
 			c0.1-1.3,0.6-1.6,1.6-1.9V0.9H0.7z M15.2,66.5c4-6.1,4-12.7,4-12.7c-3.3,1.1-9.1,2.1-9.1,2.1s5.4-4.1,9.5-16.7l3.9,3.5l-0.7,2.4
 			c0,0,1.8,2.6,2.3,4.4c0,0,2.6-4.9-0.2-10.2l-0.5,1.5l-1.5-1.4l-2.6-2.4c0,0,1.2-4.1,4.9-9.2l0.3,0.4l3,3.5l-0.9,1.5
 			c0,0,2.1,2.2,3.8,4.8c0,0,0.9-4.4-0.4-9.2l-1.4,1.3l-3.3-3.9c4.7-4.7,9.3-7.6,14.8-9.4c-0.3,0.4-0.7,0.8-0.9,1.2
@@ -128,9 +132,8 @@ class WSU_25_by_2030_Theme {
 			c2.2-2.3,2.9-6.1,2.1-12c-0.3-2.6-1.3-6.6-2.1-10.1c-0.4-1.8-0.8-3.4-1-4.6c-1.4-7,0.3-11.2,1.9-13.5c1.3-1.8,3.1-3.1,5-3.8
 			c0,0,0.1,0,0.1,0l3.2-9.8h1L48.7,15c0.5-0.1,1-0.2,1.5-0.2L53,6.1h1l-1.8,8.4c2.8-0.4,5.9-0.6,9.4-0.9c0.6,0.2,1.1,0.9,1.7,1.8
 			l9-2.8l0.3,1L64,16.9c0.1,0.2,0.1,0.4,0.2,0.5l9.4-1.2l0.2,1l-9.1,1.8c0,0.2,0.1,0.3,0.1,0.5l9.5,0.3L74.2,20.9z"/>
-	</g>
-</g>
-</svg>
+			</g>
+		</svg>
 		<?php
 		$shield_mark = ob_get_contents();
 
