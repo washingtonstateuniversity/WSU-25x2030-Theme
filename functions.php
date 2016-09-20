@@ -79,16 +79,20 @@ class WSU_25_by_2030_Theme {
 	 * Enqueue the scripts used in the theme.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'wsu-25-by-2030', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery', 'wsu-25-by-2030-doormat' ), $this->script_version, true );
-		wp_localize_script( 'wsu-25-by-2030', 'comments', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( 'comments-paging' ),
-		) );
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
-		wp_enqueue_script( 'wsu-25-by-2030-doormat', get_stylesheet_directory_uri() . '/js/doormat.min.js', array( 'jquery' ), $this->script_version, true );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', 'var drive_doormat = new Doormat({ debounce: false, snapping: { travel: false, viewport: false } });' );
-		wp_add_inline_script( 'wsu-25-by-2030-doormat', "(function ($) { $('.story').wrapAll('<div id=\"stories\" class=\"section-wrapper panel gray-dark-back white-text\" />'); $('.hentry > section:nth-last-child(2), .hentry > section:last-child').wrapAll('<div class=\"section-wrapper panel white-back\" />'); }(jQuery));", 'before' );
+
+		if ( is_front_page() ) {
+			wp_enqueue_script( 'wsu-25-by-2030-home', get_stylesheet_directory_uri() . '/js/home.js', array( 'jquery' ), $this->script_version, true );
+		}
+
+		if ( is_page( 'Feedback' ) ) {
+			wp_enqueue_script( 'wsu-25-by-2030-comments', get_stylesheet_directory_uri() . '/js/comments.js', array( 'jquery' ), $this->script_version, true );
+			wp_localize_script( 'wsu-25-by-2030-comments', 'comments', array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce' => wp_create_nonce( 'comments-paging' ),
+			) );
+		}
 	}
 
 	/**
