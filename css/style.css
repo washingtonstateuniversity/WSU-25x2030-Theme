@@ -92,21 +92,23 @@ nav .site-menu a:hover {
 	color: #525252;
 }
 
-nav .site-menu .dogeared a {
+nav .site-menu .active a {
 	color: #981e32;
 }
 
 /* Top section */
-#top.panel {
-	box-shadow: none;
+.home #spine {
+	display: none;
 }
 
-#top.panel.current {
-	box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
+.home #jacket #binder {
+	max-width: none;
+	width: 100%;
 }
 
 #jacket #binder #top section {
 	max-width: none;
+	min-height: 100vh;
 	overflow: hidden;
 	width: 100%;
 }
@@ -215,6 +217,34 @@ nav .site-menu .dogeared a {
 	padding-bottom: 2px;
 }
 
+/* Full width pages */
+main {
+	margin-left: 0;
+}
+
+.section-wrapper {
+	min-height: 100vh;
+	position: relative;
+}
+
+.section-wrapper:before,
+.section-wrapper:after {
+	background-color: inherit;
+	content: '';
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 999rem;
+}
+
+.section-wrapper:before {
+	left: -999rem;
+}
+
+.section-wrapper:after {
+	right: -999rem;
+}
+
 /* Headings and typography */
 section > header {
 	padding: 2rem 2rem 0;
@@ -241,6 +271,10 @@ h2 {
 	color: #fff;
 }
 
+#stories h2 {
+	padding-top: 0;
+}
+
 #feedback h2,
 h3 {
 	color: #981e32;
@@ -262,44 +296,6 @@ li {
 	line-height: 1.5;
 }
 
-/* Doormat.js */
-.hentry {
-	display: block;
-	position: relative;
-	margin: 0;
-	padding: 0;
-}
-
-.section-wrapper {
-	left: 0;
-	max-width: none;
-	width: 100%;
-}
-
-.panel {
-	box-shadow: 0 0 16px 0 rgba(0,0,0,0.5);
-	display: none;
-	position: fixed;
-	top: 0;
-	visibility: hidden;
-}
-
-/* Hide the box shadow on the end of the last panel */
-.panel:last-of-type {
-	box-shadow: none;
-}
-
-.panel section {
-	box-sizing: border-box;
-	margin: 0 auto;
-	min-height: 100vh;
-	padding-top: 50px;
-}
-
-.logged-in .panel section {
-	padding-top: 82px;
-}
-
 .signature {
 	background-image: url('./images/schulzkirk-sig.jpg');
 	background-size: auto;
@@ -314,11 +310,16 @@ li {
 #stories section {
 	padding-top: 10rem;
 }
-#stories .column {
+
+#stories section:first-child {
+	padding-top: 0;
+}
+
+#stories section .column {
 	width: 50%;
 }
 
-#stories .one,
+#stories section .one,
 #stories .three {
 	padding-left: 2rem;
 	padding-right: 1rem;
@@ -339,6 +340,7 @@ li {
 	font-size: 2.75em;
 	font-weight: 900;
 	letter-spacing: normal;
+	padding-top: 6rem;
 	text-transform: uppercase;
 }
 
@@ -556,6 +558,12 @@ li {
 	content: ' \00bb';
 }
 
+@media screen and (max-width: 791px) {
+	.home #binder main {
+		margin-top: 0;
+	}
+}
+
 @media only screen and (max-width: 425px) {
 	.nav-next {
 		float: left;
@@ -566,7 +574,8 @@ li {
 	#jacket #binder main {
 		margin-top: 0;
 	}
-	#spine {
+	#spine,
+	.home .desktop-header {
 		display: none;
 	}
 }
