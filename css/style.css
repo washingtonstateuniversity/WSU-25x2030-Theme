@@ -72,6 +72,7 @@ nav .site-menu a:hover {
 
 nav .site-menu .active a {
 	color: #981e32;
+	font-weight: bold;
 }
 
 /* Top section */
