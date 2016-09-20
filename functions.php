@@ -79,6 +79,8 @@ class WSU_25_by_2030_Theme {
 	 * Enqueue the scripts used in the theme.
 	 */
 	public function enqueue_scripts() {
+		$post = get_post();
+
 		wp_enqueue_script( 'wsu-25-by-2030-typekit', 'https://use.typekit.net/roi0hte.js', array(), false );
 		wp_add_inline_script( 'wsu-25-by-2030-typekit', 'try{Typekit.load();}catch(e){};' );
 
@@ -86,7 +88,7 @@ class WSU_25_by_2030_Theme {
 			wp_enqueue_script( 'wsu-25-by-2030-home', get_stylesheet_directory_uri() . '/js/home.js', array( 'jquery' ), $this->script_version, true );
 		}
 
-		if ( is_page( 'Feedback' ) ) {
+		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'comments_template' ) ) {
 			wp_enqueue_script( 'wsu-25-by-2030-comments', get_stylesheet_directory_uri() . '/js/comments.js', array( 'jquery' ), $this->script_version, true );
 			wp_localize_script( 'wsu-25-by-2030-comments', 'comments', array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
