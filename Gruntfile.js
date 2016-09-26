@@ -1,3 +1,5 @@
+var Promise = require('es6-promise').polyfill();
+
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -58,7 +60,8 @@ module.exports = function(grunt) {
                     "shorthand": 2,
                     "empty-rules": 2,
                     "vendor-prefix": 2,
-                    "zero-units": 2
+                    "zero-units": 2,
+                    "order-alphabetical": false
                 }
             }
         },

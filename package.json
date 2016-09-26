@@ -6,11 +6,12 @@
     "url": "https://github.com/washingtonstateuniversity/WSU-25x2030-Theme"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.1",
+    "autoprefixer": "^6.4.1",
+    "es6-promise": "^3.3.1",
     "grunt": "~1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "~1.0.0",
-    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-cssmin": "~1.0.2",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-phpcs": "^0.4.0",
