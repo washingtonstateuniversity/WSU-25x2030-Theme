@@ -73,6 +73,19 @@ module.exports = function(grunt) {
 			temp: [ 'tmp-style.css', 'tmp-style.css.map' ]
 		},
 
+		copy: {
+			style: {
+				expand: true,
+				src: 'style.css',
+				dest: 'style-guide'
+			},
+			scripts: {
+				expand: true,
+				src: 'js/*.js',
+				dest: 'style-guide'
+			}
+		},
+
 		phpcs: {
 			plugin: {
 				src: './'
@@ -80,6 +93,23 @@ module.exports = function(grunt) {
 			options: {
 				bin: "vendor/bin/phpcs --extensions=php --ignore=\"*/vendor/*,*/node_modules/*\"",
 				standard: "phpcs.ruleset.xml"
+			}
+		},
+
+		watch: {
+			styles: {
+				files: ['css/*.css', 'js/*.js'],
+				tasks: ['default']
+			}
+		},
+
+		connect: {
+			server: {
+				options: {
+					open: true,
+					port: 8000,
+					hostname: 'localhost'
+				}
 			}
 		}
 
@@ -90,7 +120,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( "grunt-contrib-csslint" );
 	grunt.loadNpmTasks( "grunt-contrib-clean" );
 	grunt.loadNpmTasks( "grunt-phpcs" );
+	grunt.loadNpmTasks( "grunt-contrib-watch" );
+	grunt.loadNpmTasks( "grunt-contrib-connect" );
+	grunt.loadNpmTasks( "grunt-contrib-copy" );
 
 	// Default task(s).
-	grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean']);
+	grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean', 'copy']);
+	grunt.registerTask( "serve", [ "connect", "watch" ] );
 };
