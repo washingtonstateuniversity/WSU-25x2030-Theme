@@ -76,7 +76,6 @@ class Drive_Story_Post_Type {
 		);
 		register_post_type( $this->content_type_slug, $args );
 	}
-
 }
 
 add_action( 'after_setup_theme', 'Drive_Story_Post_Type', 11 );
