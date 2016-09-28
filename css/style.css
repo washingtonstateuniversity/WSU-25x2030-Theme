@@ -801,3 +801,35 @@ table.tablepress thead tr th,
 #tablepress-1 {
 	border-top: solid 1px #981e32;
 }
+
+/* Pulled in from Edit CSS */
+.past-event {
+	color: rgba(183,183,183,1.0) !important;
+}
+
+.story > header {
+	display: none;
+}
+
+.article-author {
+	display: none;
+}
+
+.blog h3,
+.single-post h3 {
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+
+/* Fix evidence page layout for mobile devices */
+@media screen and (min-width: 694px) {
+	.single article {
+		padding-top: 6rem;
+	}
+}
+
+@media screen and (max-width: 693px) {
+	#stories section .column {
+		width: 100%;
+	}
+}
