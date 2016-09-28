@@ -833,3 +833,23 @@ table.tablepress thead tr th,
 		width: 100%;
 	}
 }
+
+.drive-full-width #binder {
+	max-width: none;
+}
+
+.card-background {
+	background-image: url('images/vertical-sample.jpg');
+    height: 120vh;
+    background-attachment: fixed;
+    background-position: 0 25px;
+	background-repeat: no-repeat;
+}
+
+.side-left .card-background {
+	background-position: -20vw 25px;
+}
+
+.side-right .card-background {
+	background-position: 50vw 25px;
+}
