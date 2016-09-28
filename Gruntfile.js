@@ -111,7 +111,8 @@ module.exports = function(grunt) {
 		connect: {
 			server: {
 				options: {
-					open: true,
+					open: 'http://localhost:8000/home.html',
+					base: 'style-guide',
 					port: 8000,
 					hostname: 'localhost'
 				}
