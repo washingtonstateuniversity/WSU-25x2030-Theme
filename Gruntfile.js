@@ -83,6 +83,11 @@ module.exports = function(grunt) {
 				expand: true,
 				src: 'js/*.js',
 				dest: 'style-guide'
+			},
+			images: {
+				expand: true,
+				src: 'images/*.*',
+				dest: 'style-guide'
 			}
 		},
 
