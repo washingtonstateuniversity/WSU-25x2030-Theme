@@ -178,6 +178,8 @@ nav .site-menu .active a {
 #top .top-message {
 	width: 250px;
 	text-transform: none;
+	padding-top: 2em;
+	color: #919191;
 }
 
 .wsu-top a {
