@@ -834,22 +834,119 @@ table.tablepress thead tr th,
 	}
 }
 
-.drive-full-width #binder {
+.drive-full-width #jacket #binder {
 	max-width: none;
 }
 
-.card-background {
-	background-image: url('images/vertical-sample.jpg');
-    height: 120vh;
-    background-attachment: fixed;
-    background-position: 0 25px;
+.drive-full-width .section-wrapper {
+	margin: 0 auto;
+	max-width: 1584px; /* Or whatever - this just happens to be the max with of the desktop header */
+	min-height: 0;
+}
+
+.drive-full-width section {
+	margin: 0 auto;
+	position: static;
+}
+
+.drive-full-width .side-left .column.two,
+.drive-full-width .side-right .column.one {
+	padding: 0 2rem 4rem;
+}
+
+.drive-full-width .side-left .column.two {
+	margin-left: 33%;
+}
+
+.drive-full-width #binder .side-left .column.one,
+.drive-full-width #binder .side-right .column.two {
+	height: 100%;
+	position: absolute;
+	width: 33%;
+}
+
+@media screen and (min-width: 1189px) {
+	.drive-full-width #binder .side-left .column.one,
+	.drive-full-width #binder .side-right .column.two {
+		/* Half of the section width minus 17 percent of the max width (since the other column is 67% wide) */
+		width: calc(50% - (1188px * 0.17));
+	}
+}
+
+.drive-full-width #binder .side-left .column.one {
+	left: 0;
+}
+
+.drive-full-width #binder .side-right .column.two {
+	right: 0;
+}
+
+.drive-full-width #binder figure {
+	background-position-y: center;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.side-left .card-background {
-	background-position: -20vw 25px;
+.drive-full-width figure img {
+	display: none;
 }
 
-.side-right .card-background {
-	background-position: 50vw 25px;
+/**
+ * Using `clip`, which is deprecated and not very cross-browser compatible.
+ *
+ * The benefit of this method is that the background images are correctly positioned,
+ * but fixing the figures introduces stacking order issues that aren't easily overcome.
+ *
+ */
+ /*
+.drive-full-width #binder .side-left .column.one,
+.drive-full-width #binder .side-right .column.two {
+	clip: rect(0, auto, auto, 0);
+}
+
+.drive-full-width #binder figure {
+	position: fixed;
+	width: 33%;
+	max-width: 590px;
+	top: 0;
+	height: 100%;
+}
+
+@media screen and (min-width: 1189px) {
+	.drive-full-width #binder figure {
+		width: calc(50% - (1188px * 0.17));
+	}
+}
+*/
+
+/**
+ * But... the above is not appreciably different than using `background-attachment: fixed;`
+ * in this context, so with some background positioning, this might be the right approach.
+ *
+ * With this approach, the markup could be reduced back down,
+ * and the background image can be applied to the column.
+ */
+.drive-full-width #binder figure {
+	background-attachment: fixed;
+	background-size: auto 100%;
+	height: 100%;
+	width: 100%;
+}
+
+.side-left .one figure {
+	background-position-x: calc(50% - (100vw / 3));
+}
+
+.side-right .two figure {
+	background-position-x: calc(50% + (100vw / 3));
+}
+
+@media screen and (min-width: 1585px) {
+	.side-left .one figure {
+		background-position-x: calc(50% - (1584px / 3.19));
+	}
+
+	.side-right .two figure {
+		background-position-x: calc(50% + (1584px / 3.19));
+	}
 }
