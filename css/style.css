@@ -76,13 +76,13 @@ nav .site-menu .active a {
 }
 
 /* Top section */
-.home #spine {
-	display: none;
-}
-
 .home #jacket #binder {
 	max-width: none;
 	width: 100%;
+}
+
+.home #letter section {
+	margin: 0 auto;
 }
 
 #jacket #binder #top section {
@@ -90,6 +90,7 @@ nav .site-menu .active a {
 	min-height: 100vh;
 	overflow: hidden;
 	width: 100%;
+	margin-top: 51px;
 }
 
 #jacket #top .column {
@@ -172,6 +173,13 @@ nav .site-menu .active a {
 	text-align: right;
 	text-transform: none;
 	letter-spacing: 1px;
+}
+
+#top .top-message {
+	width: 250px;
+	text-transform: none;
+	padding-top: 2em;
+	color: #919191;
 }
 
 .wsu-top a {
@@ -544,8 +552,7 @@ li {
 	#jacket #binder main {
 		margin-top: 0;
 	}
-	#spine,
-	.home .desktop-header {
+	#spine {
 		display: none;
 	}
 }
