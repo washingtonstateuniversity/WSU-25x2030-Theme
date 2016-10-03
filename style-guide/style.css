@@ -276,6 +276,7 @@ h2 {
 	padding-top: 0;
 }
 
+.archive-header h1,
 #feedback h2,
 h3 {
 	color: #981e32;
@@ -856,16 +857,132 @@ table.tablepress thead tr th,
 	font-weight: 700;
 }
 
-/* Fix evidence page layout for mobile devices */
-@media screen and (min-width: 694px) {
-	.single article {
-		padding-top: 6rem;
+/* Evidence page */
+.drive-full-width #jacket #binder {
+	max-width: none;
+}
+
+.archive-header {
+	box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1188px;
+    padding: 8rem 2rem 2rem;
+}
+
+.the-evidence .section-wrapper {
+	margin: 0 auto;
+	max-width: 1584px; /* Or whatever - this just happens to be the max width of the desktop header */
+	min-height: 0;
+}
+
+.the-evidence .section-wrapper:nth-of-type(even) {
+	background-color: #f3f3f3
+}
+
+.the-evidence .side-left .two {
+	padding: 0 2rem 8rem;
+}
+
+.spine-full .the-evidence .side-left .two {
+	padding-left: 4rem;
+}
+
+.spine-full .the-evidence .side-left.reverse .two {
+	padding-right: 8rem;
+}
+
+.the-evidence .side-left .one {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-bottom: 50%;
+}
+
+.spine-mobile .fluid .the-evidence .row .column {
+	float: none;
+	width: 100%;
+}
+
+.spine-full .the-evidence .side-left .two {
+	margin-left: 33%;
+}
+
+.spine-full .the-evidence .side-left .one {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	width: 33%;
+}
+
+.spine-full .the-evidence section {
+	margin: 0 auto;
+	position: static;
+}
+
+.spine-full .the-evidence .side-left.reverse .two {
+	float: left;
+	margin-left: 0;
+}
+
+.spine-full .the-evidence .side-left.reverse .one {
+	left: auto;
+	right: 0;
+}
+
+.spine-full .the-evidence .side-left .one {
+	background-position: calc(50% - (100vw / 3)) center;
+}
+
+.spine-full .the-evidence .side-left.reverse .one {
+	background-position: calc(50% + (100vw / 3)) center;
+}
+
+.the-evidence blockquote {
+	border-left: 1px solid #981e32;
+	box-sizing: border-box;
+	font-family: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	line-height: 1.5em;
+	margin: 1rem 2rem 2rem 2rem;
+	padding: 0 0 0 1rem;
+	position: relative;
+	width: calc(100% - 4rem);
+}
+
+.spine-full .the-evidence blockquote {
+	float: right;
+	margin: 1rem -4rem 2rem 2rem;
+	width: 50%;
+}
+
+.the-evidence blockquote p {
+	color: #981e32;
+	font-weight: 300;
+}
+
+.the-evidence blockquote p:last-child {
+	color: #bcbcbc;
+	font-size: 0.75em;
+	font-style: italic;
+	font-weight: 400;
+}
+
+@media screen and (min-width: 1189px) {
+	.spine-full .fluid .the-evidence .side-left .one {
+		/* Half of the section width minus 17 percent of the max width (since the other column is 67% wide) */
+		width: calc(50% - (1188px * 0.17));
 	}
 }
 
-@media screen and (max-width: 693px) {
-	#stories section .column {
-		width: 100%;
+@media screen and (min-width: 1585px) {
+	.spine-full .the-evidence .side-left .one {
+		background-position: calc(50% - (1584px / 3.19)) center;
+	}
+
+	.spine-full .the-evidence .side-left.reverse .one {
+		background-position: calc(50% + (1584px / 3.19)) center;
 	}
 }
 /*# sourceMappingURL=style.css.map */

@@ -36,6 +36,8 @@ class WSU_25_by_2030_Theme {
 	 */
 	public function include_extensions() {
 		include_once( __DIR__ . '/includes/class-drive-image-shortcake.php' );
+		include_once( __DIR__ . '/includes/class-drive-story-post-type.php' );
+		include_once( __DIR__ . '/includes/class-drive-story-thumbnails.php' );
 
 		new Drive_Image_Shortcake();
 	}
@@ -94,6 +96,10 @@ class WSU_25_by_2030_Theme {
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce' => wp_create_nonce( 'comments-paging' ),
 			) );
+		}
+
+		if ( is_page_template( 'template-evidence.php' ) ) {
+			wp_enqueue_script( 'wsu-25-by-2030-evidence', get_stylesheet_directory_uri() . '/js/evidence.js', array( 'jquery' ), $this->script_version, true );
 		}
 	}
 
