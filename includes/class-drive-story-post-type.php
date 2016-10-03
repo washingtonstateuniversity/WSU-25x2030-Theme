@@ -37,7 +37,7 @@ class Drive_Story_Post_Type {
 	 * @since 0.1.0
 	 */
 	public function setup_hooks() {
-		add_action( 'init', array( $this, 'register_content_type' ) );
+		add_action( 'init', array( $this, 'register_content_type' ), 12 );
 	}
 
 	/**
@@ -75,6 +75,7 @@ class Drive_Story_Post_Type {
 			'has_archive' => false,
 		);
 		register_post_type( $this->content_type_slug, $args );
+		register_taxonomy_for_object_type( 'wsuwp_university_category', $this->content_type_slug );
 	}
 }
 
