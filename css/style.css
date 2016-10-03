@@ -941,6 +941,12 @@ table.tablepress thead tr th,
 	font-weight: 400;
 }
 
+@media screen and (max-width: 1252px) {
+	.spine-full .the-evidence .two {
+		padding-right: 8rem;
+	}
+}
+
 @media screen and (min-width: 1189px) {
 	.spine-full .fluid .the-evidence .side-left .one {
 		/* Half of the section width minus 17 percent of the max width (since the other column is 67% wide) */
