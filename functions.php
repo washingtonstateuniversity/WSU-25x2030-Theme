@@ -97,6 +97,10 @@ class WSU_25_by_2030_Theme {
 				'nonce' => wp_create_nonce( 'comments-paging' ),
 			) );
 		}
+
+		if ( is_page_template( 'template-evidence.php' ) ) {
+			wp_enqueue_script( 'wsu-25-by-2030-evidence', get_stylesheet_directory_uri() . '/js/evidence.js', array( 'jquery' ), $this->script_version, true );
+		}
 	}
 
 	/**
