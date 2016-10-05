@@ -490,10 +490,6 @@ li {
 	display: none;
 }
 
-.comment-content p:last-of-type {
-	padding-bottom: 0;
-}
-
 /* Comment navigation */
 .comment-nav {
 	padding-top: 1rem;

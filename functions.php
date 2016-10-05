@@ -271,19 +271,36 @@ class WSU_25_by_2030_Theme {
 	 * If a comment exceeds 250 bytes, wrap the remainder in a span and
 	 * add a link that can be clicked to toggle visibility of the remainder.
 	 *
-	 * @return Filtered comment text.
+	 * @param string     $comment_text
+	 * @param WP_Comment $comment
+	 *
+	 * @return string Filtered comment text.
 	 */
 	function comment_text( $comment_text, $comment = null ) {
-		if ( null !== $comment ) {
-			$length = strlen( $comment_text );
-			$excerpt_length = 250;
+		if ( null === $comment ) {
+			return $comment_text;
+		}
 
-			if ( $length > $excerpt_length ) {
-				$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', $excerpt_length ) );
+		$length = strlen( $comment_text );
+		$excerpt_length = 250;
 
-				if ( '' !== $excerpt ) {
-					$comment_remainder = substr( $comment_text, strlen( $excerpt ), $length );
-					$comment_text = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span><br /><a href="#" class="remainder-toggle">&raquo; Show more</a>';
+		if ( $length > $excerpt_length ) {
+			$excerpt = substr( $comment_text, 0, strpos( $comment_text, ' ', $excerpt_length ) );
+
+			if ( '' !== $excerpt ) {
+				$comment_remainder = substr( $comment_text, strlen( $excerpt ), $length );
+				$toggle_link = '<p><a href="#" class="remainder-toggle">&raquo; Show more</a></p>';
+
+				if ( strpos( $comment_remainder, "\n\n" ) !== false ) {
+					$paragraphs = explode( "\n\n", $comment_remainder );
+					$new_remainder = '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $paragraphs[0]. '</span>';
+
+					unset( $paragraphs[0] );
+
+					$new_remainder .= '<div class="comment-remainder">' . "\n\n" . implode( "\n\n", $paragraphs ) . "\n\n" . '</div>';
+					$comment_text = $excerpt . $new_remainder . $toggle_link;
+				} else {
+					$comment_text = $excerpt . '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $comment_remainder . '</span>' . "\n" . $toggle_link;
 				}
 			}
 		}

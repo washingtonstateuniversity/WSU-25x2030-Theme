@@ -40,8 +40,8 @@
 			e.preventDefault();
 
 			var link = $(this),
-				ellipsis = link.siblings('.ellipsis'),
-				remainder = link.siblings('.comment-remainder');
+				ellipsis = link.closest('.comment-content').find('.ellipsis'),
+				remainder = link.closest('.comment-content').find('.comment-remainder');
 
 			if ( link.hasClass('close') ) {
 				link.removeClass('close');
