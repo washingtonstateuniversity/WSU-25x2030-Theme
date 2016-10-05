@@ -931,14 +931,23 @@ table.tablepress thead tr th,
 
 .the-evidence blockquote p {
 	color: #981e32;
+	font-size: 1.25rem;
 	font-weight: 300;
+	line-height: 1.5rem;
 }
 
 .the-evidence blockquote p:last-child {
-	color: #bcbcbc;
+	color: #8c8c8c;
 	font-size: 0.75em;
 	font-style: italic;
 	font-weight: 400;
+	line-height: 1.25em;
+}
+
+@media screen and (max-width: 1252px) {
+	.spine-full .the-evidence .two {
+		padding-right: 8rem;
+	}
 }
 
 @media screen and (min-width: 1189px) {

@@ -26,12 +26,16 @@ get_header();
 				</div>
 
 				<?php
-				$stories_query = new WP_Query( array( 'post_type' => 'drive_story' ) );
+				$stories_query_args = array(
+					'post_type' => 'drive_story',
+					'posts_per_page' => -1,
+				);
+				$stories_query = new WP_Query( $stories_query_args );
 
 				if ( $stories_query->have_posts() ) {
 					while ( $stories_query->have_posts() ) {
 						$stories_query->the_post();
-						$section_class = 0 === $stories_query->current_post % 2 ? '' : 'reverse';
+						$section_class = ( 0 === $stories_query->current_post % 2 ) ? '' : 'reverse';
 						$featured_image_src = ( spine_has_featured_image() ) ? spine_get_featured_image_src() : '';
 						$mobile_image_src = ( drive_story_has_mobile_image() ) ? drive_story_get_mobile_image_src() : '';
 						?>

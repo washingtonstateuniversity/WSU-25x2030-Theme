@@ -37,7 +37,6 @@ class WSU_25_by_2030_Theme {
 	public function include_extensions() {
 		include_once( __DIR__ . '/includes/class-drive-image-shortcake.php' );
 		include_once( __DIR__ . '/includes/class-drive-story-post-type.php' );
-		include_once( __DIR__ . '/includes/class-drive-story-thumbnails.php' );
 
 		new Drive_Image_Shortcake();
 	}
