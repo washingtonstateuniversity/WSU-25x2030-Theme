@@ -5,7 +5,7 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * @var string String used for busting cache on scripts.
 	 */
-	var $script_version = '0.1.1';
+	var $script_version = '0.1.2';
 
 	/**
 	 * @var int Comments to display per page.
@@ -291,12 +291,11 @@ class WSU_25_by_2030_Theme {
 				$comment_remainder = substr( $comment_text, strlen( $excerpt ), $length );
 				$toggle_link = '<p><a href="#" class="remainder-toggle">&raquo; Show more</a></p>';
 
-				if ( strpos( $comment_remainder, "\n\n" ) !== false ) {
-					$paragraphs = explode( "\n\n", $comment_remainder );
+				$paragraphs = preg_split( "/\\r\\n|\\r|\\n/", $comment_remainder );
+
+				if ( 1 < count( $paragraphs ) ) {
 					$new_remainder = '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $paragraphs[0]. '</span>';
-
 					unset( $paragraphs[0] );
-
 					$new_remainder .= '<div class="comment-remainder">' . "\n\n" . implode( "\n\n", $paragraphs ) . "\n\n" . '</div>';
 					$comment_text = $excerpt . $new_remainder . $toggle_link;
 				} else {
