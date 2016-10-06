@@ -1001,6 +1001,10 @@ table.tablepress thead tr th,
 	color: #717171;
 }
 
+.site-footer a:hover {
+	color: #981e32;
+}
+
 .site-footer a + a {
 	margin-left: 1em;
 }
@@ -1008,6 +1012,7 @@ table.tablepress thead tr th,
 .site-footer ul {
 	float: right;
 	list-style: none;
+	overflow: auto;
 	padding: 0;
 }
 
@@ -1022,6 +1027,10 @@ table.tablepress thead tr th,
 @media screen and (min-width: 1188px) {
 	.site-footer {
 		margin-left: calc((50vw - (1188px / 2)) * -1);
+	}
+
+	.drive-full-width .site-footer {
+		margin-left: 0;
 	}
 }
 
@@ -1041,15 +1050,12 @@ table.tablepress thead tr th,
 }
 
 @media screen and (max-width: 693px) {
-	.site-footer img,
-	.site-footer ul {
-		float: none;
+	.site-footer img {
+		display: none;
 	}
 
-	.site-footer ul,
-	.site-footer div {
-		clear: both;
-		display: block;
+	.site-footer ul {
+		float: none;
 		margin-top: 2rem;
 	}
 }
