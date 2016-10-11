@@ -963,6 +963,16 @@ table.tablepress thead tr th,
 	line-height: 1.25em;
 }
 
+#filter-options.fixed {
+	position: fixed;
+	top: 50px;
+	z-index: 1;
+}
+
+.admin-bar #filter-options.fixed {
+	top: 82px;
+}
+
 @media screen and (max-width: 1252px) {
 	.spine-full .the-evidence .two {
 		padding-right: 8rem;
