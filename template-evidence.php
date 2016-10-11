@@ -14,13 +14,15 @@ get_header();
 			<div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<header class="archive-header">
-					<h1><?php the_title(); ?></h1>
+					<h2><?php the_title(); ?></h2>
 				</header>
 
 				<div class="section-wrapper">
-					<section class="row single  gutter pad-ends">
+					<section class="row halves gutter pad-ends">
 						<div class="column one">
 							<?php the_content(); ?>
+						</div>
+						<div class="column two">
 						</div>
 					</section>
 				</div>
