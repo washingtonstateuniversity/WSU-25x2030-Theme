@@ -23,9 +23,34 @@ get_header();
 							<?php the_content(); ?>
 						</div>
 						<div class="column two">
+							<div id="story-filters">
+								<select id="filter-options">
+									<option value="">All stories</option>
+									<?php
+										$terms = get_terms( array(
+											'taxonomy' => 'wsuwp_university_category',
+											'hierarchical' => false
+										) );
+
+										if ( ! empty( $terms ) ) {
+											foreach ( $terms as $term_option ) {
+												?>
+												<option value="<?php echo esc_attr( $term_option->slug ); ?>"><?php echo esc_html( $term_option->name ); ?></option>
+												<?php
+											}
+										}
+									?>
+								</select>
+							</div>
 						</div>
 					</section>
 				</div>
+
+				<section class="row halves gutter pad-bottom topic-title">
+					<header>
+						<h3>&nbsp;</h3>
+					</header>
+				</section>
 
 				<?php
 				$stories_query_args = array(
