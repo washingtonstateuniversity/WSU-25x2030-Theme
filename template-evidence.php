@@ -34,8 +34,11 @@ get_header();
 
 										if ( ! empty( $terms ) ) {
 											foreach ( $terms as $term_option ) {
+												//$name = $term_option->name;
+												//$name = ( strstr( $name, ', Academic' ) ) ? substr( $name, 0, strpos( $term_option->name, ', Academic' ) ) : $name;
+												$name = explode( ', Academic', $term_option->name );
 												?>
-												<option value="<?php echo esc_attr( $term_option->slug ); ?>"><?php echo esc_html( $term_option->name ); ?></option>
+												<option value="<?php echo esc_attr( $term_option->slug ); ?>"><?php echo esc_html( $name[0] ); ?></option>
 												<?php
 											}
 										}
