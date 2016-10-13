@@ -143,10 +143,11 @@
 	/**
 	 * Update the history state.
 	 */
-	function update_history(value) {
-		var url = value ? evidence.default_url + 'category/' + value + '/' : evidence.default_url;
+	function update_history(name, value) {
+		var state = { name: name, value: value },
+			url = value ? evidence.default_url + 'category/' + value + '/' : evidence.default_url;
 
-		history.pushState(null, null, url);
+		history.pushState(state, null, url);
 	}
 
 	$(document).ready(function () {
@@ -167,7 +168,7 @@
 
 		scroll_to_filter();
 		update_title(name, value);
-		update_history(value);
+		update_history(name, value);
 		fetch_and_display_stories(data, 'filtered');
 	});
 
