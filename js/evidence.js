@@ -151,6 +151,12 @@
 	}
 
 	$(document).ready(function () {
+		var option = $(this).find('option:selected'),
+			value = option.val(),
+			name = value ? option.text() : '&nbsp;',
+			state = { name: name, value: value };
+
+		history.replaceState(state, null, null);
 		process_column_backgrounds();
 		fix_filters();
 		infinite_scroll();
