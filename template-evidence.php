@@ -57,12 +57,12 @@ get_header();
 
 				<?php
 				$stories_query_args = array(
-					'post_type' => 'drive_story',
-					'posts_per_page' => -1,
+					'post_type' => 'drive_story'
 				);
 				$stories_query = new WP_Query( $stories_query_args );
 
 				if ( $stories_query->have_posts() ) {
+					?><div class="evidence-stories-container" data-page="1" data-total-pages="<?php echo esc_attr( $stories_query->max_num_pages ); ?>"><?php
 					while ( $stories_query->have_posts() ) {
 						$stories_query->the_post();
 						$section_class = ( 0 === $stories_query->current_post % 2 ) ? '' : 'reverse';
@@ -86,6 +86,7 @@ get_header();
 						<?php
 					}
 					wp_reset_postdata();
+					?></div><?php
 				}
 				?>
 
