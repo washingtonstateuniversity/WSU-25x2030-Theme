@@ -144,7 +144,7 @@
 	 * Update the history state.
 	 */
 	function update_history(value) {
-		var url = value ? evidence.default_url + 'category/' + value : evidence.default_url;
+		var url = value ? evidence.default_url + 'category/' + value + '/' : evidence.default_url;
 
 		history.pushState(null, null, url);
 	}
