@@ -13,7 +13,7 @@
 	 * Look for any sections with background images stored as data attributes
 	 * and convert the data attribute into inline CSS for that section.
 	 */
-	process_column_backgrounds = function () {
+	function process_column_backgrounds() {
 		$('.column.one').each(function () {
 			var background_image = $(this).data('background'),
 				mobile_background_image = $(this).data('background-mobile');
@@ -24,12 +24,12 @@
 				$(this).css('background-image', 'url(' + background_image + ')');
 			}
 		});
-	};
+	}
 
 	/**
 	 * Apply `fixed` class to the filter drop-down if it has been scrolled to/past.
 	 */
-	fix_filters = function () {
+	function fix_filters() {
 		var $options_offset = $options.offset().top - offset;
 
 		$(document).on('scroll', function () {
@@ -39,12 +39,12 @@
 				$options.removeClass('fixed');
 			}
 		});
-	};
+	}
 
 	/**
 	 * Check if the footer is in the viewport.
 	 */
-	footer_is_visible = function () {
+	function footer_is_visible() {
 		var footer = $('.site-footer');
 
 		if (footer instanceof jQuery) {
@@ -57,12 +57,12 @@
 			rect.right > 0 &&
 			rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
 			rect.top < (window.innerHeight || document.documentElement.clientHeight);
-	};
+	}
 
 	/**
 	 * Make an AJAX call and display the response.
 	 */
-	fetch_and_display_stories = function (data, type) {
+	function fetch_and_display_stories(data, type) {
 		$.ajax({
 			type: 'post',
 			url: evidence.ajax_url,
@@ -90,12 +90,12 @@
 		}).always(function () {
 			fetching = false;
 		});
-	};
+	}
 
 	/**
 	 * Load more posts when the footer is reached.
 	 */
-	infinite_scroll = function () {
+	function infinite_scroll() {
 		window.addEventListener('scroll', function () {
 			if (fetching ||
 					all_stories ||
@@ -113,12 +113,12 @@
 
 			fetch_and_display_stories(data, 'scrolled');
 		}, 500);
-	};
+	}
 
 	/**
 	 * Scroll to the filter wrapper when an option is selected.
 	 */
-	scroll_to_filter = function () {
+	function scroll_to_filter() {
 		var filters_top = Math.round($filters.offset().top - offset);
 
 		if ($(window).scrollTop() !== filters_top) {
@@ -126,28 +126,28 @@
 				scrollTop: filters_top
 			}, 750);
 		}
-	};
+	}
 
 	/**
 	 * Update the header text and document title when an option is selected from the filter drop-down.
 	 */
-	update_title = function (name, value) {
+	function update_title(name, value) {
 		var heading = value ? name : ' ',
 			doc_title = value ? name + ' | ' + evidence.default_title : evidence.default_title;
 
 		$('.topic-title').find('h3').html(heading);
 
 		document.title = doc_title;
-	};
+	}
 
 	/**
 	 * Update the history state.
 	 */
-	update_history = function (value) {
-		var url = value ? evidence.default_url + 'category/' + value : evidence.default_url;
+	function update_history(value) {
+		var url = value ? evidence.default_url + 'category/' + value + '/' : evidence.default_url;
 
 		history.pushState(null, null, url);
-	};
+	}
 
 	$(document).ready(function () {
 		process_column_backgrounds();
