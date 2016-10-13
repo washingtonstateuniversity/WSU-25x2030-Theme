@@ -4,6 +4,20 @@
  */
 
 get_header();
+
+$terms = get_terms( array(
+	'taxonomy' => 'wsuwp_university_category',
+	'hierarchical' => false
+) );
+$category_slugs = array();
+
+foreach ( $terms as $term ) {
+	$category_slugs[] = $term->slug;
+}
+
+$category = get_query_var( 'category' );
+$category = ( $category && in_array( get_query_var( 'category' ), $category_slugs, true ) ) ? $category : false;
+$heading = ( $category ) ? get_term_by( 'slug', $category, 'wsuwp_university_category' )->name : '&nbsp;';
 ?>
 	<main class="the-evidence">
 
@@ -27,18 +41,13 @@ get_header();
 								<select id="filter-options">
 									<option value="">All stories</option>
 									<?php
-										$terms = get_terms( array(
-											'taxonomy' => 'wsuwp_university_category',
-											'hierarchical' => false
-										) );
-
 										if ( ! empty( $terms ) ) {
 											foreach ( $terms as $term_option ) {
-												//$name = $term_option->name;
-												//$name = ( strstr( $name, ', Academic' ) ) ? substr( $name, 0, strpos( $term_option->name, ', Academic' ) ) : $name;
 												$name = explode( ', Academic', $term_option->name );
 												?>
-												<option value="<?php echo esc_attr( $term_option->slug ); ?>"><?php echo esc_html( $name[0] ); ?></option>
+												<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>>
+													<?php echo esc_html( $name[0] ); ?>
+												</option>
 												<?php
 											}
 										}
@@ -51,7 +60,7 @@ get_header();
 
 				<section class="row halves gutter pad-bottom topic-title">
 					<header>
-						<h3>&nbsp;</h3>
+						<h3><?php echo esc_html( $heading ); ?></h3>
 					</header>
 				</section>
 
@@ -59,6 +68,15 @@ get_header();
 				$stories_query_args = array(
 					'post_type' => 'drive_story'
 				);
+
+				if ( $category ) {
+					$stories_query_args['tax_query'][] = array(
+						'taxonomy' => 'wsuwp_university_category',
+						'field' => 'slug',
+						'terms' => $category,
+					);
+				}
+
 				$stories_query = new WP_Query( $stories_query_args );
 
 				if ( $stories_query->have_posts() ) {
