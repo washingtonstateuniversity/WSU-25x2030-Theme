@@ -46,9 +46,7 @@ $heading = explode( ', Academic', $heading );
 											foreach ( $terms as $term_option ) {
 												$name = explode( ', Academic', $term_option->name );
 												?>
-												<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>>
-													<?php echo esc_html( $name[0] ); ?>
-												</option>
+												<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>><?php echo esc_html( $name[0] ); ?></option>
 												<?php
 											}
 										}
