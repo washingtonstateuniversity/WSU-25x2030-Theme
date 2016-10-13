@@ -172,4 +172,18 @@
 		fetch_and_display_stories(data, 'filtered');
 	});
 
+	window.onpopstate = function(event) {
+		var name = event.state.name,
+			value = event.state.value,
+			data = {
+				action: 'evidence_stories',
+				nonce: evidence.nonce,
+				category: value
+			};
+
+		$options.val(value);
+		update_title(name, value);
+		fetch_and_display_stories(data, 'filtered');
+	};
+
 }(jQuery, window, document, evidence));
