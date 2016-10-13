@@ -18,6 +18,7 @@ foreach ( $terms as $term ) {
 $category = get_query_var( 'category' );
 $category = ( $category && in_array( get_query_var( 'category' ), $category_slugs, true ) ) ? $category : false;
 $heading = ( $category ) ? get_term_by( 'slug', $category, 'wsuwp_university_category' )->name : '&nbsp;';
+$heading = explode( ', Academic', $heading );
 ?>
 	<main class="the-evidence">
 
@@ -60,7 +61,7 @@ $heading = ( $category ) ? get_term_by( 'slug', $category, 'wsuwp_university_cat
 
 				<section class="row halves gutter pad-bottom topic-title">
 					<header>
-						<h3><?php echo esc_html( $heading ); ?></h3>
+						<h3><?php echo esc_html( $heading[0] ); ?></h3>
 					</header>
 				</section>
 
