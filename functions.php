@@ -99,6 +99,12 @@ class WSU_25_by_2030_Theme {
 
 		if ( is_page_template( 'template-evidence.php' ) ) {
 			wp_enqueue_script( 'wsu-25-by-2030-evidence', get_stylesheet_directory_uri() . '/js/evidence.js', array( 'jquery' ), $this->script_version, true );
+			wp_localize_script( 'wsu-25-by-2030-evidence', 'evidence', array(
+				'default_title' => get_the_title() . ' | ' . get_bloginfo( 'name' ) . ' | Washington State University',
+				'default_url' => get_permalink(),
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce' => wp_create_nonce( 'fetch_articles' ),
+			) );
 		}
 	}
 
