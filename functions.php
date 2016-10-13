@@ -57,6 +57,8 @@ class WSU_25_by_2030_Theme {
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
 		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_comments' ) );
 		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
+		add_action( 'wp_ajax_nopriv_evidence_stories', array( $this, 'ajax_evidence_stories' ) );
+		add_action( 'wp_ajax_evidence_stories', array( $this, 'ajax_evidence_stories' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -411,6 +413,79 @@ class WSU_25_by_2030_Theme {
 		$results['page'] = $page;
 
 		echo wp_json_encode( $results );
+
+		exit();
+	}
+
+	/**
+	 * Retrieve the requested `drive_story` posts for The Evidence page.
+	 */
+	public function ajax_evidence_stories() {
+		check_ajax_referer( 'fetch_articles', 'nonce' );
+
+		$categories = array_values( get_terms( array(
+			'taxonomy' => 'wsuwp_university_category',
+			'hierarchical' => false,
+			'fields' => 'id=>slug',
+		) ) );
+
+		// Initial scholarships query arguments.
+		$stories_query_args = array(
+			'post_type' => 'drive_story'
+		);
+
+		if ( $_POST['page'] && is_numeric( $_POST['page'] ) ) {
+			$stories_query_args['offset'] = ( $_POST['page'] * 10 );
+		}
+
+		if ( $_POST['category'] && in_array( $_POST['category'], $categories, true ) ) {
+			$stories_query_args['tax_query'][] = array(
+				'taxonomy' => 'wsuwp_university_category',
+				'field' => 'slug',
+				'terms' => $_POST['category'],
+			);
+		}
+
+		$stories_query = new WP_Query( $stories_query_args );
+
+		if ( $stories_query->have_posts() ) {
+			$stories = array();
+
+			while ( $stories_query->have_posts() ) {
+				$stories_query->the_post();
+
+				$section_class = ( 0 === $stories_query->current_post % 2 ) ? '' : 'reverse';
+				$featured_image_src = ( spine_has_featured_image() ) ? spine_get_featured_image_src() : '';
+				$mobile_image_src = ( drive_story_has_mobile_image() ) ? drive_story_get_mobile_image_src() : '';
+
+				ob_start();
+				?>
+				<div class="section-wrapper new">
+					<section class="row side-left <?php echo esc_attr( $section_class ); ?>">
+						<div class="column one"
+							data-background="<?php echo esc_url( $featured_image_src ); ?>"
+							data-background-mobile="<?php echo esc_url( $mobile_image_src ); ?>">
+						</div>
+						<div class="column two">
+							<header>
+								<h2><?php the_title(); ?></h2>
+							</header>
+							<?php the_content(); ?>
+						</div>
+					</section>
+				</div>
+				<?php
+				$article = ob_get_contents();
+
+				ob_end_clean();
+
+				$stories[] = $article;
+			}
+
+			wp_reset_postdata();
+		}
+
+		echo wp_json_encode( implode( $stories ) );
 
 		exit();
 	}
