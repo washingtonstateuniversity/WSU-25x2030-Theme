@@ -59,6 +59,8 @@ class WSU_25_by_2030_Theme {
 		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
 		add_action( 'wp_ajax_nopriv_evidence_stories', array( $this, 'ajax_evidence_stories' ) );
 		add_action( 'wp_ajax_evidence_stories', array( $this, 'ajax_evidence_stories' ) );
+		add_action( 'init', array( $this, 'evidence_rewrite_rules' ) );
+		add_filter( 'query_vars', array( $this, 'evidence_query_vars' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -488,6 +490,29 @@ class WSU_25_by_2030_Theme {
 		echo wp_json_encode( implode( $stories ) );
 
 		exit();
+	}
+
+	/**
+	 * Add a rewrite rule for handling views of University Categories on The Evidence page.
+	 */
+	public function evidence_rewrite_rules() {
+		add_rewrite_rule(
+			'^the-evidence/category/([^/]*)/?',
+			'index.php?pagename=the-evidence&category=$matches[1]',
+			'top'
+		);
+	}
+
+	/**
+	 * Make WordPress aware of the category query variable in our rewrite rule.
+	 *
+	 * @param array $query_vars Current list of query_vars passed.
+	 *
+	 * @return array Modified list of query_vars.
+	 */
+	function evidence_query_vars( $query_vars ) {
+		$query_vars[] = 'category';
+		return $query_vars;
 	}
 }
 
