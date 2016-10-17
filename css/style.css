@@ -1036,11 +1036,11 @@ table.tablepress thead tr th,
 
 @media screen and (max-width: 990px) {
 	#binder .intro .column {
-		padding: 2rem;
+		padding: 0 2rem 2rem;
 	}
 
 	.intro .two {
-		min-height: 124px;
+		min-height: 92px;
 	}
 }
 
