@@ -434,6 +434,7 @@ class WSU_25_by_2030_Theme {
 		// Initial scholarships query arguments.
 		$stories_query_args = array(
 			'post_type' => 'drive_story',
+			'posts_per_page' => 10,
 		);
 
 		if ( $_POST['page'] && is_numeric( $_POST['page'] ) ) {

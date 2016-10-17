@@ -68,6 +68,7 @@ $heading = explode( ', Academic', $heading );
 				<?php
 				$stories_query_args = array(
 					'post_type' => 'drive_story',
+					'posts_per_page' => 10,
 				);
 
 				if ( $category ) {
