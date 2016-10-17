@@ -2,10 +2,11 @@
 
 	'use strict';
 
-	var $filters = $('#story-filters'),
-		$wrapper = $('#filter-options'),
-		$options = $wrapper.find('select'),
-		offset = ($('body').hasClass('admin-bar')) ? 82 : 50,
+	var $filter_column = $('.intro').find('.two'),
+		$filter_wrapper = $('#filter-options'),
+		$filter = $filter_wrapper.find('select'),
+		offset = ($('body').hasClass('admin-bar') && $(window).width() > 990) ? 82 : 50,
+		filter_top = $filter_column.offset().top - offset,
 		fetching = false,
 		all_stories = false,
 		$story_container = $('.evidence-stories-container');
@@ -31,13 +32,11 @@
 	 * Apply `fixed` class to the filter drop-down if it has been scrolled to/past.
 	 */
 	function fix_filters() {
-		var $wrapper_offset = $wrapper.offset().top - offset;
-
 		$(document).on('scroll', function () {
-			if ($(window).scrollTop() >= $wrapper_offset) {
-				$wrapper.addClass('fixed');
+			if ($(window).scrollTop() >= filter_top) {
+				$filter_wrapper.addClass('fixed');
 			} else {
-				$wrapper.removeClass('fixed');
+				$filter_wrapper.removeClass('fixed');
 			}
 		});
 	}
@@ -120,11 +119,9 @@
 	 * Scroll to the filter wrapper when an option is selected.
 	 */
 	function scroll_to_filter() {
-		var filters_top = Math.round($filters.offset().top - offset);
-
-		if ($(window).scrollTop() !== filters_top) {
+		if ($(window).scrollTop() !== filter_top) {
 			$('html, body').animate({
-				scrollTop: filters_top
+				scrollTop: filter_top
 			}, 750);
 		}
 	}
@@ -152,7 +149,7 @@
 	}
 
 	$(document).ready(function () {
-		var option = $(this).find('option:selected'),
+		var option = $filter.find('option:selected'),
 			value = option.val(),
 			name = value ? option.text() : '&nbsp;',
 			state = { name: name, value: value };
@@ -163,7 +160,7 @@
 		infinite_scroll();
 	});
 
-	$options.on('change', function () {
+	$filter.on('change', function () {
 		var option = $(this).find('option:selected'),
 			name = option.text(),
 			value = option.val(),
@@ -188,7 +185,7 @@
 				category: value
 			};
 
-		$options.val(value);
+		$filter.val(value);
 		update_title(name, value);
 		fetch_and_display_stories(data, 'filtered');
 	};
