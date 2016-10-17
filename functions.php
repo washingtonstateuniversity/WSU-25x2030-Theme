@@ -53,7 +53,7 @@ class WSU_25_by_2030_Theme {
 		add_filter( 'comment_form_fields', array( $this, 'comment_form_fields' ) );
 		add_filter( 'notify_moderator', '__return_false' );
 		add_shortcode( 'drive_section', array( $this, 'display_drive_section' ) );
-		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ), 10, 99 );
+		add_shortcode( 'comments_template', array( $this, 'display_comments_template' ) );
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
 		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_comments' ) );
 		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
