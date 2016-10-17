@@ -7,7 +7,7 @@ get_header();
 
 $terms = get_terms( array(
 	'taxonomy' => 'wsuwp_university_category',
-	'hierarchical' => false
+	'hierarchical' => false,
 ) );
 $category_slugs = array();
 
@@ -43,14 +43,14 @@ $heading = explode( ', Academic', $heading );
 									<p>View <span><select>
 										<option value="">All</option>
 										<?php
-											if ( ! empty( $terms ) ) {
-												foreach ( $terms as $term_option ) {
-													$name = explode( ', Academic', $term_option->name );
-													?>
-													<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>><?php echo esc_html( $name[0] ); ?></option>
-													<?php
-												}
+										if ( ! empty( $terms ) ) {
+											foreach ( $terms as $term_option ) {
+												$name = explode( ', Academic', $term_option->name );
+												?>
+												<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>><?php echo esc_html( $name[0] ); ?></option>
+												<?php
 											}
+										}
 										?>
 									</select></span> stories</p>
 								</div>
@@ -67,7 +67,7 @@ $heading = explode( ', Academic', $heading );
 
 				<?php
 				$stories_query_args = array(
-					'post_type' => 'drive_story'
+					'post_type' => 'drive_story',
 				);
 
 				if ( $category ) {
@@ -81,7 +81,8 @@ $heading = explode( ', Academic', $heading );
 				$stories_query = new WP_Query( $stories_query_args );
 
 				if ( $stories_query->have_posts() ) {
-					?><div class="evidence-stories-container" data-page="1" data-total-pages="<?php echo esc_attr( $stories_query->max_num_pages ); ?>"><?php
+					?><div class="evidence-stories-container" data-page="1" data-total-pages="<?php echo esc_attr( $stories_query->max_num_pages ); ?>">
+					<?php
 					while ( $stories_query->have_posts() ) {
 						$stories_query->the_post();
 						$section_class = ( 0 === $stories_query->current_post % 2 ) ? '' : 'reverse';
