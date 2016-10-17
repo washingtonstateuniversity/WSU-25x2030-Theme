@@ -61,6 +61,7 @@ class WSU_25_by_2030_Theme {
 		add_action( 'wp_ajax_evidence_stories', array( $this, 'ajax_evidence_stories' ) );
 		add_action( 'init', array( $this, 'evidence_rewrite_rules' ) );
 		add_filter( 'query_vars', array( $this, 'evidence_query_vars' ) );
+		add_filter( 'spine_get_title', array( $this, 'evidence_title' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -514,6 +515,32 @@ class WSU_25_by_2030_Theme {
 	function evidence_query_vars( $query_vars ) {
 		$query_vars[] = 'category';
 		return $query_vars;
+	}
+
+	/**
+	 * Build appropriate titles for The Evidence page.
+	 *
+	 * @param string $title Original title.
+	 *
+	 * @return string Modified title.
+	 */
+	function evidence_title( $title ) {
+		$category = get_query_var( 'category' );
+
+		if ( ! $category ) {
+			return $title;
+		}
+
+		$categories = array_values( get_terms( array(
+			'taxonomy' => 'wsuwp_university_category',
+			'hierarchical' => false,
+			'fields' => 'id=>slug',
+		) ) );
+		$category = ( $category && in_array( $category, $categories, true ) ) ? $category : false;
+		$heading = ( $category ) ? get_term_by( 'slug', $category, 'wsuwp_university_category' )->name : '';
+		$heading = explode( ', Academic', $heading );
+
+		return $heading[0] . ' | ' . $title;
 	}
 }
 
