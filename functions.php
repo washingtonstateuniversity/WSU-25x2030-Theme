@@ -383,6 +383,8 @@ class WSU_25_by_2030_Theme {
 
 		if ( isset( $_POST['url'] ) ) {
 			$url = esc_url( $_POST['url'] );
+		} else {
+			$url = '';
 		}
 
 		$page = ( strpos( $url, 'comment-page-' ) ) ? substr( $url, strpos( $url, 'comment-page-' ) + 13, -10 ) : 1;
