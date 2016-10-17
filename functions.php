@@ -450,9 +450,9 @@ class WSU_25_by_2030_Theme {
 		}
 
 		$stories_query = new WP_Query( $stories_query_args );
+		$stories = array();
 
 		if ( $stories_query->have_posts() ) {
-			$stories = array();
 
 			while ( $stories_query->have_posts() ) {
 				$stories_query->the_post();
