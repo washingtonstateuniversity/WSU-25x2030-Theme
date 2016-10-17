@@ -33,25 +33,27 @@ $heading = explode( ', Academic', $heading );
 				</header>
 
 				<div class="section-wrapper">
-					<section class="row halves gutter pad-ends">
+					<section class="row halves gutter pad-ends intro">
 						<div class="column one">
 							<?php the_content(); ?>
 						</div>
 						<div class="column two">
 							<div id="story-filters">
-								<select id="filter-options">
-									<option value="">All stories</option>
-									<?php
-										if ( ! empty( $terms ) ) {
-											foreach ( $terms as $term_option ) {
-												$name = explode( ', Academic', $term_option->name );
-												?>
-												<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>><?php echo esc_html( $name[0] ); ?></option>
-												<?php
+								<div id="filter-options">
+									<p>View <span><select>
+										<option value="">All</option>
+										<?php
+											if ( ! empty( $terms ) ) {
+												foreach ( $terms as $term_option ) {
+													$name = explode( ', Academic', $term_option->name );
+													?>
+													<option value="<?php echo esc_attr( $term_option->slug ); ?>"<?php selected( $category, $term_option->slug ); ?>><?php echo esc_html( $name[0] ); ?></option>
+													<?php
+												}
 											}
-										}
-									?>
-								</select>
+										?>
+									</select></span> stories</p>
+								</div>
 							</div>
 						</div>
 					</section>
