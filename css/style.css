@@ -939,14 +939,56 @@ table.tablepress thead tr th,
 	line-height: 1.25em;
 }
 
+#filter-options {
+	padding-top: 1em;
+}
+
 #filter-options.fixed {
 	position: fixed;
 	top: 50px;
 	z-index: 1;
 }
 
-.admin-bar #filter-options.fixed {
-	top: 82px;
+#filter-options.fixed:before {
+	background: rgba(255,255,255,0.9);
+	content: '';
+	height: 100%;
+	left: -2rem;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	z-index: -1;
+}
+
+#filter-options select {
+	background: none;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #981e32;
+	color: #981e32;
+	cursor: pointer;
+	font: 400 1em "proxima-nova","Open Sans",sans-serif;
+	letter-spacing: .5px;
+	padding-right: 1em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+#filter-options span {
+	margin: 0 0.5em;
+	position: relative;
+}
+
+#filter-options span:after {
+	border: solid transparent;
+	border-top-color: #981e32;
+	border-width: 0.53em 0.35em;
+	bottom: -0.23em;
+	box-sizing: border-box;
+	content: '';
+	position: absolute;
+	right: 0;
+	z-index: -1;
 }
 
 /* Loading animation */
@@ -989,6 +1031,30 @@ table.tablepress thead tr th,
 @media screen and (max-width: 1252px) {
 	.spine-full .the-evidence .two {
 		padding-right: 8rem;
+	}
+}
+
+@media screen and (max-width: 990px) {
+	#binder .intro .column {
+		padding: 2rem;
+	}
+
+	.intro .two {
+		min-height: 124px;
+	}
+}
+
+@media screen and (min-width: 989px) {
+	.intro .one {
+		margin-top: 1em;
+	}
+
+	.admin-bar #filter-options.fixed {
+		top: 82px;
+	}
+
+	#filter-options.fixed:before {
+		left: calc(-50vw - 1rem);
 	}
 }
 
