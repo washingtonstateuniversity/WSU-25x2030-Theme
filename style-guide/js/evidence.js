@@ -148,7 +148,7 @@
 		var state = { name: name, value: value },
 			url = value ? evidence.default_url + 'category/' + value + '/' : evidence.default_url;
 
-		history.pushState(state, null, url);
+		history.pushState(state, '', url);
 	}
 
 	$(document).ready(function () {
@@ -157,7 +157,7 @@
 			name = value ? option.text() : '&nbsp;',
 			state = { name: name, value: value };
 
-		history.replaceState(state, null, null);
+		history.replaceState(state, '');
 		process_column_backgrounds();
 		fix_filters();
 		infinite_scroll();
