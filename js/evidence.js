@@ -3,7 +3,8 @@
 	'use strict';
 
 	var $filters = $('#story-filters'),
-		$options = $('#filter-options'),
+		$wrapper = $('#filter-options'),
+		$options = $wrapper.find('select'),
 		offset = ($('body').hasClass('admin-bar')) ? 82 : 50,
 		fetching = false,
 		all_stories = false,
@@ -30,13 +31,13 @@
 	 * Apply `fixed` class to the filter drop-down if it has been scrolled to/past.
 	 */
 	function fix_filters() {
-		var $options_offset = $options.offset().top - offset;
+		var $wrapper_offset = $wrapper.offset().top - offset;
 
 		$(document).on('scroll', function () {
-			if ($(window).scrollTop() >= $options_offset) {
-				$options.addClass('fixed');
+			if ($(window).scrollTop() >= $wrapper_offset) {
+				$wrapper.addClass('fixed');
 			} else {
-				$options.removeClass('fixed');
+				$wrapper.removeClass('fixed');
 			}
 		});
 	}
