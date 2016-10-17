@@ -185,6 +185,7 @@ class WSU_25_by_2030_Theme {
 	 * Reposition the comment text area below the name and email fields.
 	 *
 	 * @param array $fields The default comment form fields.
+	 * @return array Modified comment form fields.
 	 */
 	public function comment_form_fields( $fields ) {
 		$comment_field = $fields['comment'];
@@ -199,6 +200,11 @@ class WSU_25_by_2030_Theme {
 
 	/**
 	 * A shortcode for displaying the comments template.
+	 *
+	 * @param array  $atts
+	 * @param string $content
+	 *
+	 * @return string
 	 */
 	function display_comments_template( $atts, $content = '' ) {
 		if ( is_singular() && post_type_supports( get_post_type(), 'comments' ) && ( comments_open() || get_comments_number() ) ) {
@@ -227,7 +233,7 @@ class WSU_25_by_2030_Theme {
 	 * Display a sequence of pages passed via shortcode as a comma separated
 	 * string of page IDs.
 	 *
-	 * @param $atts
+	 * @param array $atts
 	 *
 	 * @return mixed|string|void
 	 */
@@ -316,7 +322,7 @@ class WSU_25_by_2030_Theme {
 	 *
 	 * @param  array  $urls          URLs to print for resource hints.
 	 * @param  string $relation_type The relation type the URLs are printed for.
-	 * @return array                 Difference betwen the two arrays.
+	 * @return array                 Difference between the two arrays.
 	 */
 	public function remove_s_w_org_dns_prefetch( $urls, $relation_type ) {
 		if ( 'dns-prefetch' === $relation_type ) {
@@ -330,7 +336,7 @@ class WSU_25_by_2030_Theme {
 	}
 
 	/**
-	 * Retrive the navigation markup for the current page of comments.
+	 * Retrieve the navigation markup for the current page of comments.
 	 *
 	 * @since 0.0.19
 	 *
