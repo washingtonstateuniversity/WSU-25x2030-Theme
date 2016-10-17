@@ -12,6 +12,14 @@
 		$story_container = $('.evidence-stories-container');
 
 	/**
+	 * Recalculate `filter_top` value on resize.
+	 */
+	$(window).resize(function() {
+		offset = ($('body').hasClass('admin-bar') && $(window).width() > 990) ? 82 : 50;
+		filter_top = $filter_column.offset().top - offset;
+	});
+
+	/**
 	 * Look for any sections with background images stored as data attributes
 	 * and convert the data attribute into inline CSS for that section.
 	 */
