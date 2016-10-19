@@ -38,6 +38,7 @@ class Drive_Story_Post_Type {
 	 */
 	public function setup_hooks() {
 		add_action( 'init', array( $this, 'register_content_type' ), 12 );
+		add_filter( 'rest_prepare_' . $this->content_type_slug, array( $this, 'include_mobile_image' ), 10, 2 );
 	}
 
 	/**
@@ -117,6 +118,23 @@ class Drive_Story_Post_Type {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Add a link for the mobile image to the REST API response containing story data,
+	 * and enable it to be embedded.
+	 *
+	 * @param WP_REST_Response $response The current REST response object.
+	 * @param WP_Post          $post     The current WP_Post object.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function include_mobile_image( $response, $post ) {
+		$mobile_image_id = esc_html( get_post_meta( $post->ID, 'drive_story_mobile-image_thumbnail_id', true ) );
+
+		$response->add_link( 'https://api.w.org/mobilemedia', esc_url( rest_url( '/wp/v2/media/' . $mobile_image_id ) ), array( 'embeddable' => true ) );
+
+		return $response;
 	}
 }
 
