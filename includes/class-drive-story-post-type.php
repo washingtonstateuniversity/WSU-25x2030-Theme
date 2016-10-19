@@ -73,6 +73,7 @@ class Drive_Story_Post_Type {
 				'thumbnail',
 			),
 			'has_archive' => false,
+			'show_in_rest' => true,
 		);
 		register_post_type( $this->content_type_slug, $args );
 		register_taxonomy_for_object_type( 'wsuwp_university_category', $this->content_type_slug );
