@@ -57,6 +57,9 @@ class WSU_25_by_2030_Theme {
 		add_action( 'init', array( $this, 'apply_comment_filter' ) );
 		add_action( 'wp_ajax_nopriv_comment_navigation', array( $this, 'ajax_comments' ) );
 		add_action( 'wp_ajax_comment_navigation', array( $this, 'ajax_comments' ) );
+		add_action( 'init', array( $this, 'evidence_rewrite_rules' ) );
+		add_filter( 'query_vars', array( $this, 'evidence_query_vars' ) );
+		add_filter( 'spine_get_title', array( $this, 'evidence_title' ) );
 
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -99,6 +102,13 @@ class WSU_25_by_2030_Theme {
 
 		if ( is_page_template( 'template-evidence.php' ) ) {
 			wp_enqueue_script( 'wsu-25-by-2030-evidence', get_stylesheet_directory_uri() . '/js/evidence.js', array( 'jquery' ), $this->script_version, true );
+			wp_localize_script( 'wsu-25-by-2030-evidence', 'evidence', array(
+				'default_title' => get_the_title() . ' | ' . get_bloginfo( 'name' ) . ' | Washington State University',
+				'default_url' => get_permalink(),
+				'request_url_base' => esc_url( rest_url( '/wp/v2/drive_story?_embed' ) ),
+				//'ajax_url' => admin_url( 'admin-ajax.php' ),
+				//'nonce' => wp_create_nonce( 'fetch_articles' ),
+			) );
 		}
 	}
 
@@ -415,6 +425,55 @@ class WSU_25_by_2030_Theme {
 		echo wp_json_encode( $results );
 
 		exit();
+	}
+
+	/**
+	 * Add a rewrite rule for handling views of University Categories on The Evidence page.
+	 */
+	public function evidence_rewrite_rules() {
+		add_rewrite_rule(
+			'^the-evidence/category/([^/]*)/?',
+			'index.php?pagename=the-evidence&category=$matches[1]',
+			'top'
+		);
+	}
+
+	/**
+	 * Make WordPress aware of the category query variable in our rewrite rule.
+	 *
+	 * @param array $query_vars Current list of query_vars passed.
+	 *
+	 * @return array Modified list of query_vars.
+	 */
+	function evidence_query_vars( $query_vars ) {
+		$query_vars[] = 'category';
+		return $query_vars;
+	}
+
+	/**
+	 * Build appropriate titles for The Evidence page.
+	 *
+	 * @param string $title Original title.
+	 *
+	 * @return string Modified title.
+	 */
+	function evidence_title( $title ) {
+		$category = get_query_var( 'category' );
+
+		if ( ! $category ) {
+			return $title;
+		}
+
+		$categories = array_values( get_terms( array(
+			'taxonomy' => 'wsuwp_university_category',
+			'hierarchical' => false,
+			'fields' => 'id=>slug',
+		) ) );
+		$category = ( $category && in_array( $category, $categories, true ) ) ? $category : false;
+		$heading = ( $category ) ? get_term_by( 'slug', $category, 'wsuwp_university_category' )->name : '';
+		$heading = explode( ', Academic', $heading );
+
+		return $heading[0] . ' | ' . $title;
 	}
 }
 
