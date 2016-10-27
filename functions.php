@@ -5,7 +5,7 @@ class WSU_25_by_2030_Theme {
 	/**
 	 * @var string String used for busting cache on scripts.
 	 */
-	var $script_version = '0.2.0';
+	var $script_version = '0.3.0';
 
 	/**
 	 * @var int Comments to display per page.
