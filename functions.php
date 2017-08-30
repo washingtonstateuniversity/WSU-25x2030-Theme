@@ -1,6 +1,6 @@
 <?php
 
-class WSU_25_by_2030_Theme {
+class WSU_25_By_2030_Theme {
 
 	/**
 	 * @var string String used for busting cache on scripts.
@@ -13,18 +13,18 @@ class WSU_25_by_2030_Theme {
 	var $comments_per_page = 5;
 
 	/**
-	 * @var WSU_25_by_2030_Theme
+	 * @var WSU_25_By_2030_Theme
 	 */
 	private static $instance;
 	/**
 	 * Maintain and return the one instance and initiate hooks when
 	 * called the first time.
 	 *
-	 * @return \WSU_25_by_2030_Theme
+	 * @return \WSU_25_By_2030_Theme
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new WSU_25_by_2030_Theme;
+			self::$instance = new WSU_25_By_2030_Theme();
 			self::$instance->include_extensions();
 			self::$instance->setup_hooks();
 		}
@@ -310,7 +310,7 @@ class WSU_25_by_2030_Theme {
 				$paragraphs = preg_split( "/\\r\\n|\\r|\\n/", $comment_remainder );
 
 				if ( 1 < count( $paragraphs ) ) {
-					$new_remainder = '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $paragraphs[0]. '</span>';
+					$new_remainder = '<span class="ellipsis">&hellip;</span><span class="comment-remainder">' . $paragraphs[0] . '</span>';
 					unset( $paragraphs[0] );
 					$new_remainder .= '<div class="comment-remainder">' . "\n\n" . implode( "\n\n", $paragraphs ) . "\n\n" . '</div>';
 					$comment_text = $excerpt . $new_remainder . $toggle_link;
@@ -477,12 +477,12 @@ class WSU_25_by_2030_Theme {
 	}
 }
 
-add_action( 'after_setup_theme', 'WSU_25_by_2030_Theme' );
+add_action( 'after_setup_theme', 'WSU_25_By_2030_Theme' );
 /**
  * Start things up.
  *
- * @return \WSU_25_by_2030_Theme
+ * @return \WSU_25_By_2030_Theme
  */
-function WSU_25_by_2030_Theme() {
-	return WSU_25_by_2030_Theme::get_instance();
+function WSU_25_By_2030_Theme() {
+	return WSU_25_By_2030_Theme::get_instance();
 }

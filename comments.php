@@ -36,17 +36,18 @@ if ( post_password_required() ) {
 		'cancel_reply_link' => '',
 		'label_submit' => 'Submit feedback',
 		'format' => 'html5',
-		),
-		$front_page_id
-	);
+	), $front_page_id );
 
 	$comments = get_comments( array(
 		'post_id' => $front_page_id,
 		'status' => 'approve',
 	) );
 
-	?><div class="comment-list"><?php
+	?>
 
+	<div class="comment-list">
+
+	<?php
 	wp_list_comments( array(
 		'max_depth' => 1,
 		'style' => 'div',
@@ -55,24 +56,23 @@ if ( post_password_required() ) {
 		'format' => 'html5',
 		'reverse_top_level' => false,
 	), $comments );
-
 	?>
+
 	</div>
-	<?php
 
-	if ( get_comment_pages_count() > 1 ) {
+	<?php if ( get_comment_pages_count() > 1 ) { ?>
 
-		?><div class="comment-nav"><?php
-
+	<div class="comment-nav">
+		<?php
 		$comment_navigation_args = array(
 			'prev_text' => 'Newer comments',
 			'next_text' => 'Older comments',
 		);
 
 		the_comments_navigation( $comment_navigation_args );
+		?>
+	</div>
 
-		?></div><?php
-	}
-	?>
+	<?php } ?>
 
 </div>

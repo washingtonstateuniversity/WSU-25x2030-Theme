@@ -1,12 +1,9 @@
-<?php
-
-?>
 <footer class="site-footer">
 
 	<section>
 
 		<a href="https://wsu.edu/">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/wsu-logo.png" width="198" height="55" alt="Washington State University" />
+			<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/wsu-logo.png' ); ?>" width="198" height="55" alt="Washington State University" />
 		</a>
 
 		<div>
