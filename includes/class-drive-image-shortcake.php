@@ -70,8 +70,10 @@ class Drive_Image_Shortcake {
 	public function img_tag_output( $image_html, $attr ) {
 		$image_html = '';
 		$mobile_image_html = '';
+		$attachment = wp_get_attachment_image_src( (int) $attr['attachment'], 'spine-medium_size' );
+		$attachment_mobile = wp_get_attachment_image_src( (int) $attr['attachment-mobile'], 'spine-medium_size' );
 
-		if ( isset( $attr['attachment'] ) && $attachment = wp_get_attachment_image_src( (int) $attr['attachment'], 'spine-medium_size' ) ) {
+		if ( isset( $attr['attachment'] ) && $attachment ) {
 			$image_html = '<figure class="standard-image"><img ';
 			$image_classes = explode( ' ', $attr['classes'] );
 			$image_classes[] = 'size-' . $attr['size'];
@@ -94,7 +96,7 @@ class Drive_Image_Shortcake {
 			$image_html .= ' /></figure>';
 		}
 
-		if ( isset( $attr['attachment-mobile'] ) && $attachment = wp_get_attachment_image_src( (int) $attr['attachment-mobile'], 'spine-medium_size' ) ) {
+		if ( isset( $attr['attachment-mobile'] ) && $attachment_mobile ) {
 			$mobile_image_html = '<figure class="mobile-image"><img ';
 			$image_classes = explode( ' ', $attr['classes'] );
 			$image_classes[] = 'size-' . $attr['size'];
@@ -105,7 +107,7 @@ class Drive_Image_Shortcake {
 				'class' => trim( implode( ' ', $image_classes ) ),
 			);
 
-			$image_attr['src'] = esc_url( $attachment[0] );
+			$image_attr['src'] = esc_url( $attachment_mobile[0] );
 			$image_attr['width'] = '';
 			$image_attr['height'] = '';
 

@@ -132,7 +132,9 @@ class Drive_Story_Post_Type {
 	public function include_mobile_image( $response, $post ) {
 		$mobile_image_id = esc_html( get_post_meta( $post->ID, 'drive_story_mobile-image_thumbnail_id', true ) );
 
-		$response->add_link( 'https://api.w.org/mobilemedia', esc_url( rest_url( '/wp/v2/media/' . $mobile_image_id ) ), array( 'embeddable' => true ) );
+		$response->add_link( 'https://api.w.org/mobilemedia', esc_url( rest_url( '/wp/v2/media/' . $mobile_image_id ) ), array(
+			'embeddable' => true,
+		) );
 
 		return $response;
 	}
