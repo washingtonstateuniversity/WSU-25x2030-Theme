@@ -1,16 +1,18 @@
-var Promise = require('es6-promise').polyfill();
+module.exports = function( grunt ) {
+	grunt.initConfig( {
+		pkg: grunt.file.readJSON( "package.json" ),
 
-module.exports = function(grunt) {
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		stylelint: {
+			src: [ "css/*.css" ]
+		},
 
 		concat: {
 			options: {
 				sourceMap: true
 			},
 			dist: {
-				src: 'css/*.css',
-				dest: 'tmp-style.css'
+				src: "css/*.css",
+				dest: "tmp-style.css"
 			}
 		},
 
@@ -30,70 +32,60 @@ module.exports = function(grunt) {
 			}
 		},
 
-		csslint: {
-			main: {
-				src: [ "style.css" ],
-				options: {
-					"fallback-colors": false,			  // unless we want to support IE8
-					"box-sizing": false,				   // unless we want to support IE7
-					"compatible-vendor-prefixes": false,   // The library on this is older than autoprefixer.
-					"gradients": false,					// This also applies ^
-					"overqualified-elements": false,	   // We have weird uses that will always generate warnings.
-					"ids": false,
-					"regex-selectors": false,			  // audit
-					"adjoining-classes": false,
-					"box-model": false,					// audit
-					"universal-selector": false,		   // audit
-					"unique-headings": false,			  // audit
-					"outline-none": false,				 // audit
-					"floats": false,
-					"font-sizes": false,				   // audit
-					"important": false,					// This should be set to 2 one day.
-					"unqualified-attributes": false,	   // Should probably be 2 one day.
-					"qualified-headings": false,
-					"known-properties": 1,			  // Okay to ignore in the case of known unknowns.
-					"duplicate-background-images": 2,
-					"duplicate-properties": 2,
-					"star-property-hack": 2,
-					"text-indent": 2,
-					"display-property-grouping": 2,
-					"shorthand": 2,
-					"empty-rules": 2,
-					"vendor-prefix": 2,
-					"zero-units": 2,
-					"order-alphabetical": false
-				}
-			}
-		},
-
 		clean: {
 			options: {
 				force: true
 			},
-			temp: [ 'tmp-style.css', 'tmp-style.css.map' ]
+			temp: [ "tmp-style.css", "tmp-style.css.map" ]
 		},
 
-		copy: {
-			style: {
-				expand: true,
-				src: 'style.css',
-				dest: 'style-guide'
-			},
+		jscs: {
 			scripts: {
-				expand: true,
-				src: 'js/*.js',
-				dest: 'style-guide'
+				src: [ "Gruntfile.js", "js/*.js" ],
+				options: {
+					preset: "jquery",
+					requireCamelCaseOrUpperCaseIdentifiers: false, // We rely on name_name too much to change them all.
+					maximumLineLength: 250,
+					validateIndentation: "\t"
+				}
+			}
+		},
+
+		jshint: {
+			grunt_script: {
+				src: [ "Gruntfile.js" ],
+				options: {
+					curly: true,
+					eqeqeq: true,
+					noarg: true,
+					quotmark: "double",
+					undef: true,
+					unused: false,
+					node: true     // Define globals available when running in Node.
+				}
 			},
-			images: {
-				expand: true,
-				src: 'images/*.*',
-				dest: 'style-guide'
+			theme_scripts: {
+				src: [ "js/*.js" ],
+				options: {
+					bitwise: true,
+					curly: true,
+					eqeqeq: true,
+					forin: true,
+					freeze: true,
+					noarg: true,
+					nonbsp: true,
+					quotmark: "double",
+					undef: true,
+					unused: true,
+					browser: true, // Define globals exposed by modern browsers.
+					jquery: true   // Define globals exposed by jQuery.
+				}
 			}
 		},
 
 		phpcs: {
 			plugin: {
-				src: './'
+				src: "./"
 			},
 			options: {
 				bin: "vendor/bin/phpcs --extensions=php --ignore=\"*/vendor/*,*/node_modules/*\"",
@@ -103,34 +95,35 @@ module.exports = function(grunt) {
 
 		watch: {
 			styles: {
-				files: ['css/*.css', 'js/*.js'],
-				tasks: ['default']
+				files: [ "css/*.css", "js/*.js" ],
+				tasks: [ "default" ]
 			}
 		},
 
 		connect: {
 			server: {
 				options: {
-					open: 'http://localhost:8000/home.html',
-					base: 'style-guide',
+					open: "http://localhost:8000/home.html",
+					base: "style-guide",
 					port: 8000,
-					hostname: 'localhost'
+					hostname: "localhost"
 				}
 			}
 		}
 
-	});
+	} );
 
 	grunt.loadNpmTasks( "grunt-postcss" );
 	grunt.loadNpmTasks( "grunt-contrib-concat" );
-	grunt.loadNpmTasks( "grunt-contrib-csslint" );
-	grunt.loadNpmTasks( "grunt-contrib-clean" );
-	grunt.loadNpmTasks( "grunt-phpcs" );
-	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-contrib-connect" );
-	grunt.loadNpmTasks( "grunt-contrib-copy" );
+	grunt.loadNpmTasks( "grunt-contrib-clean" );
+	grunt.loadNpmTasks( "grunt-contrib-jshint" );
+	grunt.loadNpmTasks( "grunt-contrib-watch" );
+	grunt.loadNpmTasks( "grunt-jscs" );
+	grunt.loadNpmTasks( "grunt-phpcs" );
+	grunt.loadNpmTasks( "grunt-stylelint" );
 
 	// Default task(s).
-	grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean', 'copy']);
+	grunt.registerTask( "default", [ "stylelint", "concat", "postcss", "clean", "jscs", "jshint", "phpcs" ] );
 	grunt.registerTask( "serve", [ "connect", "watch" ] );
 };
