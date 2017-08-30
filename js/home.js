@@ -1,6 +1,6 @@
-(function ($) {
+( function( $ ) {
 
-	'use strict';
+	"use strict";
 
 	/**
 	 * Determine if the current view is an iOS device.
@@ -25,23 +25,23 @@
 	 */
 	var cursor_parallax = function() {
 		var strength = 25,
-			height = strength / $(window).height(),
-			width = strength / $(window).width();
+			height = strength / $( window ).height(),
+			width = strength / $( window ).width();
 
-		$('#top').on('mousemove', function (e) {
-			var x = e.pageX - ($(window).width() / 2),
-				y = e.pageY - ($(window).height() / 2),
-				new_x = -(width * x) - 25,
-				new_y = -(height * y) - 50;
+		$( "#top" ).on( "mousemove", function( e ) {
+			var x = e.pageX - ( $( window ) .width() / 2 ),
+				y = e.pageY - ( $( window ).height() / 2 ),
+				new_x = -( width * x ) - 25,
+				new_y = -( height * y ) - 50;
 
-			$('.image').css('transform', 'matrix(1, 0, 0, 1, ' + new_x + ', ' + new_y + ')');
-		});
+			$( ".image" ).css( "transform", "matrix(1, 0, 0, 1, " + new_x + ", " + new_y + ")" );
+		} );
 	};
 
-	$(document).ready(function () {
-		if ( ! is_iOS() && ! is_Android() ) {
+	$( document ).ready( function() {
+		if ( !is_iOS() && !is_Android() ) {
 			cursor_parallax();
 		}
-	});
+	} );
 
-}(jQuery));
+}( jQuery ) );
