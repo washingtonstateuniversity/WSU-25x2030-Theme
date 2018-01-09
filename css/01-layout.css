@@ -50,31 +50,31 @@ section > header {
 	}
 }
 
-/* Top section */
-#jacket #binder #top section {
-	max-width: none;
-	min-height: 100vh;
+/* Home page */
+.home .main-header {
+	display: none;
+}
+
+.home .hero {
 	overflow: hidden;
-	width: 100%;
 }
 
-#jacket #top .column {
-	float: none;
-	margin: 0 auto;
-}
-
-#top .one {
+.home .fluid .row.hero .one {
 	color: #fff;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100vh;
-	max-width: 1188px;
-	padding-top: 10rem;
+	max-width: 990px;
 	width: 100%;
+	z-index: 1;
 }
 
-#top .image {
+.home.admin-bar .fluid .row.hero .one {
+	min-height: calc(100vh - 32px);
+}
+
+.home .fluid .row.hero .image {
 	background-position: center;
 	background-size: cover;
 	height: 120%;
@@ -82,5 +82,30 @@ section > header {
 	position: absolute;
 	top: -10%;
 	width: 120%;
-	z-index: -1;
+}
+
+@media (max-width: 989px) {
+
+	.home .fluid .row.hero .one {
+		min-height: calc(100vh - 50px);
+	}
+
+	.home.admin-bar .fluid .row.hero .one {
+		min-height: calc(100vh - 50px - 32px);
+	}
+}
+
+@media (max-width: 791px) {
+
+	.home.admin-bar .fluid .row.hero .one {
+		min-height: calc(100vh - 50px - 46px);
+	}
+}
+
+@media (min-width: 1188px) {
+
+	/* 1/2 viewport width + 1/2 customizer max width setting - Spine width */
+	.home .hero {
+		min-width: calc(50vw + (1188px / 2) - 198px);
+	}
 }
