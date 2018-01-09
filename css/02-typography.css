@@ -4,6 +4,27 @@ body {
 	font-weight: 400;
 }
 
+.main-header sub:not(.unset),
+.main-header sup:not(.unset) {
+	display: inline-block;
+	font-size: 13px;
+	letter-spacing: 2px;
+}
+
+.main-header .sup-header:not(.unset) a {
+	color: #5e6a71;
+	font-weight: 700;
+}
+
+.main-header .sub-header span {
+	border-left: 1px solid #981e32;
+	color: #981e32;
+	font-weight: 300;
+	margin-left: 1em;
+	padding-left: 1.25em;
+	text-transform: uppercase;
+}
+
 h2,
 h3 {
 	color: #981e32;

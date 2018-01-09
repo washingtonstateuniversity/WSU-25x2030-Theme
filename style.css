@@ -12,6 +12,27 @@ html {
 	background: #fff;
 }
 
+body {
+	background-color: #981e32;
+}
+
+main {
+	background-color: #fff;
+}
+
+.main-header {
+	height: auto;
+	z-index: 100;
+	position: relative;
+	width: auto;
+	padding: 1rem 0 3rem;
+	background-color: #fff;
+}
+
+#spine #glue:before {
+	border-right: solid 1px #b5babe;
+}
+
 section > header {
 	padding: 2rem 2rem 0;
 }
@@ -85,6 +106,27 @@ body {
 	color: #282828;
 	font-family: proxima-nova, "Open Sans", Arial, sans-serif;
 	font-weight: 400;
+}
+
+.main-header sub:not(.unset),
+.main-header sup:not(.unset) {
+	display: inline-block;
+	font-size: 13px;
+	letter-spacing: 2px;
+}
+
+.main-header .sup-header:not(.unset) a {
+	color: #5e6a71;
+	font-weight: 700;
+}
+
+.main-header .sub-header span {
+	border-left: 1px solid #981e32;
+	color: #981e32;
+	font-weight: 300;
+	margin-left: 1em;
+	padding-left: 1.25em;
+	text-transform: uppercase;
 }
 
 h2,
