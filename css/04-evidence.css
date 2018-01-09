@@ -208,3 +208,10 @@
 		background-position: calc(50% + (1584px / 3.19)) center;
 	}
 }
+
+@media handheld and (orientation: landscape) {
+
+	.spine-full .the-evidence .side-left .one {
+		background-attachment: scroll;
+	}
+}

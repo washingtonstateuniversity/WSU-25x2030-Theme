@@ -22,6 +22,13 @@ section > header {
 	background-color: #f1f1f1;
 }
 
+@media screen and (min-width: 694px) {
+
+	.single article {
+		padding-top: 6rem;
+	}
+}
+
 /* Top section */
 #jacket #binder #top section {
 	max-width: none;

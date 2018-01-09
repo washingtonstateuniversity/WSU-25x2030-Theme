@@ -32,6 +32,13 @@ section > header {
 	background-color: #f1f1f1;
 }
 
+@media screen and (min-width: 694px) {
+
+	.single article {
+		padding-top: 6rem;
+	}
+}
+
 /* Top section */
 #jacket #binder #top section {
 	max-width: none;
@@ -137,10 +144,11 @@ li {
 }
 
 #top .top-message {
-	width: 250px;
-	text-transform: none;
-	padding-top: 2em;
 	color: #919191;
+	letter-spacing: .05em;
+	padding-top: 2em;
+	text-transform: none;
+	width: 350px;
 }
 
 .wsu-top a {
@@ -319,13 +327,70 @@ p a.btncrm:hover {
 }
 
 .past-event {
-	color: rgba(183, 183, 183, 1) !important;
+	color: rgba(183, 183, 183, 1);
 }
 
 .blog h3,
 .single-post h3 {
-	font-size: 1.6rem;
+	font-size: 1rem;
+	font-weight: 900;
+	letter-spacing: .05rem;
+	padding: 1rem 0 .25rem;
+}
+
+h1.article-title {
+	font-weight: 300;
+	color: #981e32;
+}
+
+main article header h2 {
+	margin-bottom: 0;
+	font-size: 2.25rem;
+}
+
+.post-sub {
+	font-size: 1.75em;
+	font-weight: 300;
+	letter-spacing: 0;
+	padding-bottom: 3rem;
+	color: #6a6a6a;
+	line-height: 1.25em;
+}
+
+.article-header hgroup.source,
+.article-header .hgroup.source {
+	text-transform: uppercase;
+	padding: 0 0 .5rem;
+	font-size: .9em;
+	color: rgba(0, 0, 0, .5);
+	border-bottom: solid 1px #e3e3e3;
+	margin-bottom: 2rem;
+}
+
+aside.widget header {
+	font-size: 1.25rem;
 	font-weight: 700;
+	line-height: 1.25;
+	margin-bottom: .5rem;
+}
+
+aside.widget p {
+	font-size: .85rem;
+}
+
+.button {
+	border-radius: 0;
+	background: #fff;
+	border: 1px solid #981e32;
+	color: #981e32;
+	transition: all .3s ease;
+	padding: .5em 2.5em;
+}
+
+.button:hover {
+	background: #981e32;
+	color: #fff;
+	border: 1px solid #981e32;
 }
 
 /* Form */
@@ -441,6 +506,7 @@ p a.btncrm:hover {
 
 .comment article {
 	overflow: auto;
+	padding-top: 0;
 }
 
 .comment article footer {
@@ -721,6 +787,13 @@ p a.btncrm:hover {
 
 	.spine-full .the-evidence .side-left.reverse .one {
 		background-position: calc(50% + (1584px / 3.19)) center;
+	}
+}
+
+@media handheld and (orientation: landscape) {
+
+	.spine-full .the-evidence .side-left .one {
+		background-attachment: scroll;
 	}
 }
 

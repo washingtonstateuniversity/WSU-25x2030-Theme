@@ -93,6 +93,7 @@
 
 .comment article {
 	overflow: auto;
+	padding-top: 0;
 }
 
 .comment article footer {
