@@ -1,0 +1,63 @@
+.dataTables_length,
+.dataTables_filter {
+	margin-bottom: 1em;
+}
+
+.dataTables_wrapper label input {
+	height: 25px;
+	background: #ebe8de;
+	border-radius: 0;
+	border: 1px solid #cacaca;
+	font-size: 1.5rem;
+	color: #585858;
+}
+
+.dataTables_wrapper label input,
+.dataTables_wrapper label select {
+	height: 25px;
+	font-size: .8rem;
+}
+
+table.tablepress thead tr th,
+.tablepress tfoot th {
+	font-size: 1.1rem;
+	border-bottom: 1px solid #e5e5e5;
+	background: transparent;
+}
+
+.tablepress tfoot th {
+	font-size: 1rem;
+	color: #585858;
+}
+
+.tablepress .sorting:hover,
+.tablepress .sorting_asc,
+.tablepress .sorting_desc {
+	color: #000;
+	background: #f7f7f7;
+}
+
+.dataTables_paginate a,
+.paging_simple .paginate_button.next:after,
+.paging_simple .paginate_button.previous:before {
+	text-shadow: none;
+	color: #4f868e !important;
+	border: none;
+}
+
+.tablepress-table-description {
+	margin: 2em 0;
+}
+
+#tablepress-1 .column-1 {
+	padding: 1em 1.5em;
+}
+
+#tablepress-1 .column-2 {
+	border-left: solid 1px #981e32;
+	padding: 1em 1.5em;
+}
+
+#tablepress-1 {
+	border-top: solid 1px #981e32;
+}
