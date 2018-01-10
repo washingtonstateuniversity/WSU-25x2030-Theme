@@ -21,7 +21,7 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
  * @return string
  */
 function d25_theme_version() {
-	return '0.3.0';
+	return '0.4.0';
 }
 
 /**
