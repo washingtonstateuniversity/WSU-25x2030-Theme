@@ -7,7 +7,7 @@ function post_type_slug() {
 }
 
 add_action( 'init', 'WSU\D25\Evidence\register_post_type', 12 );
-add_action( 'wp_enqueue_scripts','WSU\D25\Evidence\enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'WSU\D25\Evidence\enqueue_scripts' );
 add_action( 'init', 'WSU\D25\Evidence\rewrite_rules' );
 add_filter( 'query_vars', 'WSU\D25\Evidence\query_vars' );
 add_filter( 'spine_get_title', 'WSU\D25\Evidence\page_title' );

@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/evidence.php';
 require_once __DIR__ . '/includes/comments.php';
 
 add_filter( 'spine_child_theme_version', 'd25_theme_version' );
-add_action( 'wp_enqueue_scripts','d25_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'd25_enqueue_scripts' );
 add_filter( 'make_the_builder_content', 'd25_replace_p_with_figure', 99 );
 add_filter( 'wp_resource_hints', 'd25_remove_s_w_org_dns_prefetch', 10, 2 );
 
