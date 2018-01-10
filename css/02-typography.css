@@ -11,6 +11,7 @@ body {
 	letter-spacing: 2px;
 }
 
+.main-header .sup-header:not(.unset),
 .main-header .sup-header:not(.unset) a {
 	color: #5e6a71;
 	font-weight: 700;
@@ -39,7 +40,6 @@ h2 {
 }
 
 .archive-header h1,
-#feedback h2,
 h3 {
 	color: #981e32;
 	font-size: 2.75em;

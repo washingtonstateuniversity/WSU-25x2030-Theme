@@ -39,6 +39,10 @@ section > header {
 	padding-bottom: 8em;
 }
 
+.archive-footer {
+	padding: 2rem;
+}
+
 .gray-lighter-back {
 	background-color: #f1f1f1;
 }
