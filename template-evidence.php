@@ -86,7 +86,7 @@ $heading = explode( ', Academic', $heading );
 						$stories_query->the_post();
 						$section_class = ( 0 === $stories_query->current_post % 2 ) ? '' : 'reverse';
 						$featured_image_src = ( spine_has_featured_image() ) ? spine_get_featured_image_src() : '';
-						$mobile_image_src = ( drive_story_has_mobile_image() ) ? drive_story_get_mobile_image_src() : '';
+						$mobile_image_src = ( WSU\D25\Evidence\has_mobile_image() ) ? WSU\D25\Evidence\get_mobile_image_src() : '';
 						?>
 						<div class="section-wrapper">
 							<section class="row side-left <?php echo esc_attr( $section_class ); ?>">
@@ -108,6 +108,8 @@ $heading = explode( ', Academic', $heading );
 					?></div><?php
 				}
 				?>
+
+				<hr class="evidence-bottom" />
 
 			</div><!-- #post -->
 

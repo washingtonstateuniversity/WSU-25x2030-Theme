@@ -6,7 +6,7 @@
 	var $filter_column = $( ".intro" ).find( ".two" ),
 		$filter_wrapper = $( "#filter-options" ),
 		$filter = $filter_wrapper.find( "select" ),
-		offset = ( $( "body" ).hasClass( "admin-bar" ) && $( window ).width() > 990 ) ? 82 : 50,
+		offset = ( $( "body" ).hasClass( "admin-bar" ) && $( window ).width() > 990 ) ? 32 : 0,
 		filter_top = $filter_column.offset().top - offset,
 		fetching = false,
 		$story_container = $( ".evidence-stories-container" );
@@ -15,7 +15,7 @@
 	 * Recalculate `filter_top` value on resize.
 	 */
 	$( window ).resize( function() {
-		offset = ( $( "body" ).hasClass( "admin-bar" ) && $( window ).width() > 990 ) ? 82 : 50;
+		offset = ( $( "body" ).hasClass( "admin-bar" ) && $( window ).width() > 990 ) ? 32 : 0;
 		filter_top = $filter_column.offset().top - offset;
 	} );
 
@@ -53,7 +53,7 @@
 	 * Check if the footer is in the viewport.
 	 */
 	function footer_is_visible() {
-		var footer = $( ".site-footer" );
+		var footer = $( ".evidence-bottom" );
 
 		if ( footer instanceof jQuery ) {
 			footer = footer[ 0 ];

@@ -1,0 +1,164 @@
+/* Form */
+.drive-comment-form {
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.drive-comment-form .comment-form-author,
+.drive-comment-form .comment-form-email {
+	padding: 0 0 1em;
+	width: 100%;
+}
+
+.drive-comment-form input,
+.drive-comment-form textarea {
+	background: none;
+	border-radius: 0;
+	border: 1px solid #b5babe;
+	padding: .75rem;
+	width: 100%;
+}
+
+.drive-comment-form input:focus,
+.drive-comment-form textarea:focus {
+	border-color: #fff;
+	box-shadow: none;
+}
+
+.drive-comment-form textarea {
+	display: block;
+	height: 150px;
+	resize: none;
+}
+
+.drive-comment-form #submit {
+	appearance: none;
+	background: #981e32;
+	border: 0;
+	border-radius: 0;
+	box-shadow: 0 3px 10px 2px rgba(0, 0, 0, .2);
+	color: #fff;
+	padding: 1rem 2.5rem;
+	transition: background .4s;
+	width: auto;
+}
+
+.drive-comment-form input#submit:hover,
+.drive-comment-form input#submit:active {
+	background: #c60c30;
+}
+
+.comment-success {
+	display: none;
+}
+
+/* Footer */
+#footer {
+	bottom: 0;
+	height: auto !important;
+	min-height: 0 !important;
+	top: auto;
+}
+
+#footer figure img {
+	width: 40%;
+}
+
+@keyframes spin {
+
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.processing-indicator {
+	animation: spin 1s infinite linear;
+	border: .25rem solid rgba(255, 255, 255, .5);
+	border-radius: 50%;
+	border-top-color: #981e32;
+	height: 2rem;
+	margin: 0 auto;
+	width: 2rem;
+}
+
+/* List */
+.comment {
+	line-height: 1.6;
+	padding: .75rem 0;
+}
+
+.comment article {
+	overflow: auto;
+	padding-top: 0;
+}
+
+.comment article footer {
+	border-top: 0;
+	margin: 0;
+	top: 0;
+}
+
+.comment-author img {
+	box-sizing: border-box;
+	float: left;
+	padding-right: 1rem;
+}
+
+.says,
+.reply,
+.comment-remainder {
+	display: none;
+}
+
+/* Comment navigation */
+.comment-nav {
+	padding-top: 1rem;
+}
+
+.nav-links:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.nav-previous {
+	float: left;
+	padding-top: 1rem;
+}
+
+.nav-next {
+	float: right;
+	padding-top: 1rem;
+}
+
+#comments .nav-links a {
+	border: 1px solid #b3b3b3;
+	color: #b3b3b3;
+	display: block;
+	padding: .5em 1em;
+	transition: border-color .4s, color .4s;
+}
+
+#comments .nav-links a:hover {
+	border-color: #fff;
+	color: #fff;
+}
+
+.nav-previous a:before {
+	content: "\00ab\00a0";
+}
+
+.nav-next a:after {
+	content: " \00bb";
+}
+
+@media only screen and (max-width: 425px) {
+
+	.nav-next {
+		float: left;
+	}
+}
