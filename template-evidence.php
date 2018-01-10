@@ -109,6 +109,8 @@ $heading = explode( ', Academic', $heading );
 				}
 				?>
 
+				<hr class="evidence-bottom" />
+
 			</div><!-- #post -->
 
 			<?php
