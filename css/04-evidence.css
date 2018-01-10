@@ -118,7 +118,7 @@
 	}
 }
 
-@media screen and (min-width: 989px) {
+@media screen and (min-width: 990px) {
 
 	.intro .one {
 		margin-top: 1em;
@@ -157,7 +157,7 @@
 
 	.the-evidence .side-left.reverse .one {
 		right: 0;
-		background-position: calc(100vw - (1188px / 2) - 99px) center;
+		background-position: calc(100vw - (1188px / 2)) center;
 	}
 
 	.the-evidence .side-left .two {
