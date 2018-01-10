@@ -60,7 +60,7 @@ li {
 	color: #fff;
 }
 
-#top h1 {
+.home .hero h1 {
 	font-family: proxima-nova, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	font-size: 8rem;
 	font-weight: 900;
@@ -69,11 +69,11 @@ li {
 	text-transform: uppercase;
 }
 
-#top h1:first-line {
+.home .hero h1:first-line {
 	color: #919191;
 }
 
-#top p {
+.home .hero p {
 	font-size: 1em;
 	font-weight: 400;
 	letter-spacing: 2px;
@@ -81,7 +81,7 @@ li {
 	text-transform: uppercase;
 }
 
-#top .top-message {
+.home .hero .top-message {
 	color: #919191;
 	letter-spacing: .05em;
 	padding-top: 2em;
@@ -89,14 +89,14 @@ li {
 	width: 350px;
 }
 
-.wsu-top a {
+.home .hero .wsu-top a {
 	text-decoration: none;
 	color: #fff;
 	transition: .4s, color .4s;
 	padding-bottom: 2px;
 }
 
-.wsu-top a:hover {
+.home .hero .wsu-top a:hover {
 	color: #d7dadb;
 	border-bottom: solid 1px #d7dadb;
 	padding-bottom: 2px;
@@ -104,11 +104,11 @@ li {
 
 @media only screen and (max-width: 693px) {
 
-	#top h1 {
+	.home .hero h1 {
 		font-size: 16vw;
 	}
 
-	#top p {
+	.home .hero p {
 		font-size: .9em;
 	}
 }

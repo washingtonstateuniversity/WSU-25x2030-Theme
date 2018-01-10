@@ -28,7 +28,7 @@
 			height = strength / $( window ).height(),
 			width = strength / $( window ).width();
 
-		$( "#top" ).on( "mousemove", function( e ) {
+		$( ".hero" ).on( "mousemove", function( e ) {
 			var x = e.pageX - ( $( window ) .width() / 2 ),
 				y = e.pageY - ( $( window ).height() / 2 ),
 				new_x = -( width * x ) - 25,
