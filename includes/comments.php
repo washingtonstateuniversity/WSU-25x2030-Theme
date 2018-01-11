@@ -7,7 +7,7 @@ add_filter( 'comment_form_fields', 'WSU\D25\Comments\form_fields' );
 add_action( 'init', 'WSU\D25\Comments\apply_comment_filter' );
 add_action( 'wp_ajax_nopriv_comment_navigation', 'WSU\D25\Comments\ajax_callback' );
 add_action( 'wp_ajax_comment_navigation', 'WSU\D25\Comments\ajax_callback' );
-add_action( 'wp_enqueue_scripts','WSU\D25\Comments\enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'WSU\D25\Comments\enqueue_scripts' );
 add_shortcode( 'comments_template', 'WSU\D25\Comments\display_template' );
 
 /**
