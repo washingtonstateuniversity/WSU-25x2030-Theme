@@ -1,4 +1,4 @@
-body {
+main {
 	color: #282828;
 	font-family: proxima-nova, "Open Sans", Arial, sans-serif;
 	font-weight: 400;
@@ -49,8 +49,8 @@ h3 {
 }
 
 p,
-li {
-	font-size: 1.1em;
+main li {
+	font-size: 1rem;
 	font-weight: 400;
 	letter-spacing: .5px;
 	line-height: 1.5;
